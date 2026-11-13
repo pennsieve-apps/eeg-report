@@ -1,0 +1,308 @@
+{%- macro table(t, cls='') -%}
+<div class="tablewrap"><table class="{{ cls }}">
+<thead><tr>{% for h in t.header %}<th{% if loop.index0 > 0 and t.kinds and t.kinds[loop.index0] != 'text' %} class="num"{% endif %}>{{ h }}</th>{% endfor %}</tr></thead>
+<tbody>{% for r in t.rows %}<tr>{% for c in r %}<td{% if loop.index0 > 0 and t.kinds and t.kinds[loop.index0] != 'text' %} class="num"{% endif %}>{{ c }}</td>{% endfor %}</tr>
+{% endfor %}</tbody></table></div>
+{%- endmacro -%}
+{%- macro licence_text(l) -%}{% for seg in l.segments %}{% if seg.url %}<a href="{{ seg.url }}">{{ seg.text }}</a>{% else %}{{ seg.text }}{% endif %}{% endfor %}{% if l.url %} <a href="{{ l.url }}">{{ l.url }}</a>{% endif %}{% if l.refs %} Please cite {{ l.refs|refs }}.{% endif %}{%- endmacro -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Pennsieve eeg-report {{ m.version }}">
+<title>{{ m.title }}</title>
+<style>
+:root {
+  --ink: #111827; --muted: #4b5563; --faint: #6b7280; --line: #d9dee5; --soft: #f4f6f8;
+  --accent: #1f4e8c; --warn-bg: #fff7e6; --warn-line: #d97706; --warn-ink: #7c2d12;
+  --note-bg: #eef4fb; --res-bg: #f3f0fb; --res-line: #6d28d9;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #ffffff; color: var(--ink);
+  font: 15px/1.55 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "DejaVu Sans", sans-serif; }
+main { max-width: 1040px; margin: 0 auto; padding: 28px 16px 64px; }
+h1 { font-size: 27px; line-height: 1.25; margin: 0 0 6px; }
+h2 { font-size: 21px; margin: 42px 0 10px; padding-top: 10px; border-top: 2px solid var(--ink); }
+h3 { font-size: 16px; margin: 22px 0 6px; }
+h4 { font-size: 14px; margin: 16px 0 4px; color: var(--muted); }
+p { margin: 6px 0 10px; }
+a { color: var(--accent); }
+.meta { display: grid; grid-template-columns: max-content 1fr; gap: 2px 14px; margin: 14px 0; font-size: 14px; }
+.meta dt { color: var(--faint); }
+.meta dd { margin: 0; }
+nav.toc { background: var(--soft); border-radius: 6px; padding: 10px 14px; font-size: 14px; margin: 16px 0; }
+nav.toc ol { margin: 4px 0; padding-left: 20px; columns: 2; column-gap: 28px; }
+{% if not pdf %}@media (max-width: 640px) { nav.toc ol { columns: 1; } .meta { grid-template-columns: 1fr; } }{% endif %}
+.tablewrap { {% if not pdf %}overflow-x: auto; {% endif %}margin: 8px 0 12px; }
+table { border-collapse: collapse; font-size: 13px; width: auto; }
+th, td { border-bottom: 1px solid var(--line); padding: 4px 8px; text-align: left; vertical-align: top; }
+th { background: var(--soft); font-weight: 600; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.kv th { background: none; color: var(--muted); font-weight: normal; }
+.box { padding: 8px 14px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+.box h3, .box h4 { margin: 4px 0; }
+.box ul { margin: 4px 0; padding-left: 18px; }
+.warnbox { background: var(--warn-bg); border-left: 4px solid var(--warn-line); color: var(--warn-ink); }
+.warnbox h3, .warnbox h4 { color: var(--warn-ink); }
+.licbox { background: var(--note-bg); border-left: 4px solid var(--accent); }
+.resbox { background: var(--res-bg); border-left: 4px solid var(--res-line); }
+.note { color: var(--muted); font-size: 13px; }
+figure { margin: 18px 0 22px; page-break-inside: avoid; break-inside: avoid; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; display: block; }
+figcaption { font-size: 13.5px; color: #1f2937; margin-top: 6px; }
+.step-meta { font-size: 13px; color: var(--muted); }
+.refs li { margin-bottom: 7px; font-size: 13.5px; }
+.refs .unknown { color: #991b1b; }
+.params { font-size: 12.5px; }
+code { font-family: ui-monospace, Menlo, "DejaVu Sans Mono", monospace; font-size: 12.5px; background: var(--soft);
+  padding: 0 3px; border-radius: 3px; }
+details { margin: 8px 0; }
+summary { cursor: pointer; color: var(--accent); }
+footer { margin-top: 48px; color: var(--faint); font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 10px; }
+{% if pdf %}
+@page { size: A4; margin: 15mm 12mm 16mm 12mm;
+  @bottom-left { content: "{{ m.title|css_string }} · research output, not a clinical interpretation"; font-size: 7pt; color: #6b7280; font-family: "DejaVu Sans", sans-serif; }
+  @bottom-right { content: "page " counter(page) " of " counter(pages); font-size: 7pt; color: #6b7280; font-family: "DejaVu Sans", sans-serif; } }
+body { font-size: 9.5pt; line-height: 1.4; }
+main { max-width: none; padding: 0; }
+h1 { font-size: 18pt; } h2 { font-size: 14pt; margin-top: 18pt; break-after: avoid; } h3, h4 { break-after: avoid; }
+nav.toc ol { columns: 2; }
+table { font-size: 7pt; width: 100%; }
+th, td { padding: 1.5pt 3pt; overflow-wrap: break-word; }
+td:first-child { overflow-wrap: anywhere; min-width: 40mm; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+figure img { max-height: 225mm; width: auto; max-width: 100%; }
+figcaption { font-size: 8pt; }
+.refs li { font-size: 8pt; }
+table.params { width: auto; font-size: 7pt; } .params code { font-size: 7pt; }
+a { color: inherit; text-decoration: none; }
+{% endif %}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>{{ m.title }}</h1>
+<dl class="meta">
+  <dt>Report written</dt><dd>{{ m.generated }}</dd>
+  {% if m.workflows %}<dt>Workflow</dt><dd>{{ m.workflows|join('; ') }}</dd>{% endif %}
+  <dt>Recordings</dt><dd>{{ m.recordings|length }}</dd>
+  <dt>Steps</dt><dd>{% for s in m.sections %}{{ s.label }}{% if not loop.last %}, {% endif %}{% else %}none{% endfor %}</dd>
+  {% if m.datasets %}<dt>Data</dt><dd>{% for d in m.datasets %}{% if d.url %}<a href="{{ d.url }}">{{ d.title }}</a>{% else %}{{ d.title }}{% endif %}{% if not loop.last %}; {% endif %}{% endfor %}</dd>{% endif %}
+</dl>
+</header>
+
+<section class="box resbox" id="research">
+<h3>Research output, not a clinical interpretation</h3>
+<p>Every number, figure and detection in this report was produced automatically by research software. Seizure
+detections are candidates for an expert to review, spike counts include transients a reader would not call spikes,
+and spectral, sleep and connectivity measures have not been validated as diagnostic tests. Review them against the
+EEG; do not base clinical decisions on them.</p>
+</section>
+
+{% if m.licences %}
+<section id="licence" class="box licbox">
+<h3>Usage and licence</h3>
+<p>Parts of this analysis come with terms of use. Respect them when you use or share the results.</p>
+<ul>{% for l in m.licences %}<li><b><a href="#{{ l.anchor }}">{{ l.step }}</a>:</b> {{ licence_text(l) }}</li>{% endfor %}</ul>
+</section>
+{% endif %}
+
+<nav class="toc"><b>Contents</b>
+<ol>
+  <li><a href="#recordings">Recordings</a></li>
+  {% for s in m.sections %}<li><a href="#{{ s.anchor }}">{{ s.title }}</a>{% if s.warnings %} ({{ s.warnings|length }} warning{{ 's' if s.warnings|length != 1 }}){% endif %}</li>{% endfor %}
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#software">Software &amp; provenance</a></li>
+  <li><a href="#references">References</a></li>
+  <li><a href="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#cite">How to cite</a></li>
+  {% if m.issues %}<li><a href="#inputs">Notes on the inputs</a></li>{% endif %}
+</ol></nav>
+
+{% if m.warnings_total %}
+<section class="box warnbox" id="warnings">
+<h3>Warnings ({{ m.warnings_total }})</h3>
+<p>The steps reported warnings; read them in each section before interpreting its results:
+{% for s in m.sections if s.warnings %}<a href="#{{ s.anchor }}">{{ s.label }}</a> {{ s.warnings|length }}{% if not loop.last %}; {% endif %}{% endfor %}.</p>
+</section>
+{% endif %}
+
+<section id="recordings">
+<h2>1. Recordings</h2>
+{% if m.recordings %}
+<p>{{ m.recordings|length }} recording{{ 's' if m.recordings|length != 1 }}{% if m.has_derivative %}, as eeg-prep read them (<code>recordings.csv</code>){% endif %}.
+{% if m.rec_from_steps %}Recordings without an eeg-prep entry are listed from the steps' own outputs.{% endif %}
+Times are as recorded (dates in de-identified datasets are often shifted).</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Recording</th>{% if m.has_subject %}<th>Subject</th>{% endif %}<th>Kind</th><th class="num">Duration</th><th>Start</th><th>Montage</th><th class="num">Channels (good of all)</th><th class="num">Hz</th><th class="num">Annotated seizures</th>{% if m.has_age %}<th class="num">Age</th>{% endif %}{% if m.has_sex %}<th>Sex</th>{% endif %}{% for c in m.extra_cols %}<th>{{ c }}</th>{% endfor %}<th>Steps with results</th></tr></thead>
+<tbody>{% for r in m.recordings %}<tr><td>{{ r.recording_id }}</td>{% if m.has_subject %}<td>{{ r.subject }}</td>{% endif %}<td>{{ r.kind or '–' }}</td><td class="num">{{ r.duration }}</td><td>{{ r.start or '–' }}</td><td>{{ r.montage }}</td><td class="num">{{ r.channels }}</td><td class="num">{{ r.sfreq }}</td><td class="num">{{ r.seizures }}</td>{% if m.has_age %}<td class="num">{{ r.age }}</td>{% endif %}{% if m.has_sex %}<td>{{ r.sex }}</td>{% endif %}{% for c in r.extra %}<td>{{ c }}</td>{% endfor %}<td>{{ r.steps|join(', ') or '–' }}</td></tr>
+{% endfor %}</tbody></table></div>
+{% else %}
+<p class="note">No recordings were found: neither an eeg-prep <code>recordings.csv</code> nor any recording in the steps' summaries.</p>
+{% endif %}
+
+{% if m.glance.rows and m.glance.cols %}
+<h3>At a glance</h3>
+<p>One row per recording with a headline number of each linked step; each step's section has the full table, its
+figures and its warnings. Research output, to be reviewed by a clinician against the EEG.</p>
+<div class="tablewrap"><table>
+<thead><tr>{% for h in m.glance.header %}<th{% if loop.index0 > 0 %} class="num"{% endif %}>{{ h }}</th>{% endfor %}</tr></thead>
+<tbody>{% for r in m.glance.rows %}<tr><td>{{ r.recording_id }}</td>{% for c in r.cells %}<td class="num">{{ c }}</td>{% endfor %}</tr>
+{% endfor %}</tbody></table></div>
+{% endif %}
+</section>
+
+{% for s in m.sections %}
+<section id="{{ s.anchor }}">
+<h2>{{ s.index }}. {{ s.title }}</h2>
+<p class="step-meta">{{ s.label }} {{ s.version }}{% if s.variant %} · variant {{ s.variant }}{% endif %} · {{ s.n_recordings }} recording{{ 's' if s.n_recordings != 1 }}{% if s.wall_seconds is not none %} · ran {{ s.wall_seconds|duration }}{% endif %}{% if s.refs %} · references {{ s.refs|refs }}{% endif %}</p>
+
+{% for n in s.notices %}<div class="box resbox"><h4>Read this first</h4><p>{{ n }}</p></div>{% endfor %}
+{% if s.licence %}<div class="box licbox"><h4>Usage and licence</h4><p>{{ licence_text(s.licence) }}</p></div>{% endif %}
+
+{% if s.about %}<p>{{ s.about }}</p>{% else %}<p class="note">No description is built into this report for <code>{{ s.app }}</code>; its results are shown as the app wrote them.</p>{% endif %}
+
+{% if s.warnings %}
+<div class="box warnbox"><h4>Warnings ({{ s.warnings|length }})</h4>
+<ul>{% for w in s.warnings[:s.warnings_visible] if not pdf %}<li>{{ w }}</li>{% endfor %}{% for w in s.warnings if pdf %}<li>{{ w }}</li>{% endfor %}</ul>
+{% if not pdf and s.warnings|length > s.warnings_visible %}<details><summary>{{ s.warnings|length - s.warnings_visible }} more</summary><ul>{% for w in s.warnings[s.warnings_visible:] %}<li>{{ w }}</li>{% endfor %}</ul></details>{% endif %}
+</div>
+{% endif %}
+
+{% if s.qc %}
+{% set t = s.qc.totals %}
+<h3>Data quality per recording</h3>
+<p>{{ t.n }} recording{{ 's' if t.n != 1 }}: {{ t.with_bad }} with at least one bad channel ({{ t.bad_channels }} bad channel{{ 's' if t.bad_channels != 1 }} in all);
+{{ t.ica_total }} ICA component{{ 's' if t.ica_total != 1 }} removed as artifacts{% if t.ica_classes %} ({{ t.ica_classes }}){% endif %};
+bad segments: median {{ t.bad_pct_median }} %, at most {{ t.bad_pct_max }} % of a recording.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Recording</th><th class="num">Duration</th><th>Montage</th><th class="num">Channels good of all</th><th>Bad channels</th><th class="num">ICA removed</th><th>Removed as</th><th class="num">Variance removed (%)</th><th class="num">Bad segments (%)</th><th class="num">Annotated seizures</th>{% if t.has_dropped %}<th>Channels left out</th>{% endif %}</tr></thead>
+<tbody>{% for r in s.qc.rows %}<tr><td>{{ r.recording_id }}</td><td class="num">{{ r.duration }}</td><td>{{ r.montage }}</td><td class="num">{{ r.channels }}</td><td>{{ r.bad_channels }}</td><td class="num">{{ r.ica }}</td><td>{{ r.ica_classes or '–' }}</td><td class="num">{{ r.ica_var }}</td><td class="num">{{ r.bad_pct }}</td><td class="num">{{ r.seizures }}</td>{% if t.has_dropped %}<td>{{ r.dropped or '–' }}</td>{% endif %}</tr>
+{% endfor %}</tbody></table></div>
+<p class="note">Bad channels were interpolated or left out by the later steps; bad segments are left out by every step except seizure detection. "Variance removed" is the share of the signal variance the removed components carried: a high value can mean heavy eye or muscle artifact, or that the components also held EEG.</p>
+{% endif %}
+
+{% if s.scores %}
+<h3>Detection performance against the annotated seizures</h3>
+<p>Candidates for review, scored with SzCORE's rules (event-based: an annotated seizure counts as detected when a candidate overlaps it, with 30 s tolerance before and 60 s after; sample-based: per second). Sensitivity and false detections per day are always read together. These scores describe the detector on this data; they are not a diagnosis of any recording.</p>
+{{ table(s.scores) }}
+{% endif %}
+
+{% if s.headline %}
+<h3>{% if s.app == 'eeg-seizures' %}Candidate seizures per recording (for review){% else %}Headline numbers per recording{% endif %}</h3>
+{% if s.app == 'eeg-spikes' %}<p class="note">The laterality index is (left − right) / (left + right) of the spike events by the hemisphere of their leading channel: it gives the side with more detected events, not a localisation of the epileptogenic zone. "Annotated side" is the lateralisation given with the source data, when there is one.</p>{% endif %}
+{{ table(s.headline) }}
+<p class="note">{{ s.research }}</p>
+{% elif s.n_recordings == 0 and s.app != 'eeg-prep' %}
+<p class="note">This step reported no recordings{% if s.skipped %} (see "Not analysed" below){% endif %}.</p>
+{% endif %}
+
+{% for t in s.extra_tables %}
+<h4>{{ t.name }}</h4>
+{{ table(t) }}
+{% if t.note %}<p class="note">{{ t.note }}</p>{% endif %}
+{% endfor %}
+
+{% if s.skipped %}
+<h4>Not analysed</h4>
+<ul class="note">{% for g in s.skipped %}<li>{{ g.reason }}: {{ g.ids|length }} ({{ g.ids[:6]|join(', ') }}{% if g.ids|length > 6 %}, ...{% endif %})</li>{% endfor %}</ul>
+{% endif %}
+
+{% if s.figures %}
+<h3>Figures</h3>
+{% for f in s.figures %}
+<figure>{% if f.ok %}<img src="{{ f.pdf_src if pdf else f.dest }}" alt="{{ f.rel }}" width="{{ f.w }}" height="{{ f.h }}">{% else %}<p class="note">(figure could not be read: {{ f.rel }})</p>{% endif %}
+<figcaption><b>Figure {{ f.number }}.</b> {{ f.caption or '(no caption in summary.json)' }}</figcaption></figure>
+{% endfor %}
+{% endif %}
+{% if s.omitted %}<p class="note">{{ s.omitted|length }} more figure{{ 's' if s.omitted|length != 1 }} of this step (MAX_FIGURES = {{ m.parameters.MAX_FIGURES }}) are in the report's folder{% if pdf %} <code>{{ s.omitted[0].dest.rsplit('/', 1)[0] }}/</code>, next to index.html, which links them.{% else %}:
+{% for f in s.omitted %}<a href="{{ f.dest }}">{{ f.rel }}</a>{% if not loop.last %}, {% endif %}{% endfor %}.{% endif %}</p>{% endif %}
+
+{% if s.tables %}
+<h4>Tables</h4>
+<p class="note">Copied to the <code>tables</code> output under <code>{{ s.tables_dir }}/</code>:</p>
+<ul class="note">{% for t in s.tables %}<li><code>{{ t.rel }}</code>{% if t.caption %}: {{ t.caption }}{% endif %}{% if not t.exists %} <b>(listed but missing)</b>{% endif %}</li>{% endfor %}</ul>
+{% endif %}
+
+{% if s.parameters %}
+{% if pdf %}<h4>Parameters</h4>{% else %}<details><summary>Parameters ({{ s.parameters|length }})</summary>{% endif %}
+<div class="tablewrap"><table class="kv params">{% for k, v in s.parameters.items() %}<tr><th><code>{{ k }}</code></th><td>{{ v|plain }}</td></tr>{% endfor %}</table></div>
+{% if not pdf %}</details>{% endif %}
+{% endif %}
+</section>
+{% endfor %}
+
+<section id="methods">
+<h2>Methods</h2>
+{% for s in m.sections %}
+<p><b>{{ s.title }}.</b> {% if s.methods %}{{ s.methods }}{% else %}Computed with {{ s.app }}{% endif %}{% if s.refs %} {{ s.refs|refs }}{% endif %}. The step ran as <code>{{ s.app }}</code> {{ s.version }} on {{ s.n_recordings }} recording{{ 's' if s.n_recordings != 1 }}; its parameters are listed in <a href="#{{ s.anchor }}">section {{ s.index }}</a>.</p>
+{% endfor %}
+<p>The report was written by <code>eeg-report</code> {{ m.version }} (Pennsieve), which copies each step's numbers,
+figures, captions and warnings from its <code>summary.json</code>, and its software versions, parameters and
+citations from its <code>provenance.json</code>; it does not recompute or interpret them.</p>
+</section>
+
+<section id="software">
+<h2>Software &amp; provenance</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Step</th><th>Version</th><th>Tools</th><th class="num">Run time</th><th class="num">Peak memory</th><th>Recordings</th></tr></thead>
+<tbody>{% for s in m.sections %}<tr><td>{{ s.label }}</td><td>{{ s.version or '–' }}</td>
+<td class="params">{% for k, v in s.tools.items() %}{{ k }} {{ v }}{% if not loop.last %}; {% endif %}{% endfor %}</td>
+<td class="num">{{ s.wall_seconds|duration if s.wall_seconds is not none else '–' }}</td>
+<td class="num">{{ s.peak_rss_mb|mb }}</td><td>{% for k, v in s.statuses.items() %}{{ k }} {{ v }}{% if not loop.last %}, {% endif %}{% else %}–{% endfor %}</td></tr>{% endfor %}</tbody>
+</table></div>
+<p class="note">Run time and peak memory are what each step recorded in its provenance.json (the whole step).</p>
+</section>
+
+<section id="references">
+<h2>References</h2>
+<p class="note">The works each step cites in its provenance.json, and the datasets. Author lists, titles and journals
+come from the Pennsieve apps' CITATION.cff files and from Crossref, DataCite and PubMed.</p>
+<ol class="refs">
+{% for r in m.references %}<li id="ref-{{ r.n }}">{% if r.known %}{{ r.authors }}. {{ r.title }}. {{ r.where }} <a href="{{ r.url }}">doi:{{ r.doi }}</a>{% elif r.url %}<span class="unknown">DOI only (not in the report's citation table):</span> <a href="{{ r.url }}">doi:{{ r.doi }}</a>{% else %}<span class="unknown">Not a DOI, as the step gave it:</span> {{ r.doi }}{% endif %}</li>
+{% endfor %}</ol>
+</section>
+
+<section id="acknowledgements">
+<h2>Acknowledgements</h2>
+<p>These analyses package other people's methods, and the credit for them is theirs. Pennsieve packaged the methods
+as platform apps; it did not develop them.{% if m.acknowledgements %} The steps in this report are built on:{% endif %}</p>
+{% if m.acknowledgements %}<ul>
+{% for a in m.acknowledgements %}<li><b>{{ a.app }}</b>: {% for sw in a.software %}{% if sw.url %}<a href="{{ sw.url }}">{{ sw.title }}</a>{% else %}{{ sw.title }}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}</li>
+{% endfor %}</ul>{% endif %}
+<p>The report is rendered with Jinja (Pallets), WeasyPrint (CourtBouillon) and Pillow.</p>
+{% if m.datasets %}
+<h3>Data</h3>
+<ul>
+{% for d in m.datasets %}<li>{% if d.creators %}{{ d.creators }}{% if d.year %} ({{ d.year }}){% endif %}. {% endif %}<i>{{ d.title }}</i>{% if d.publisher %}, {{ d.publisher }}{% endif %}. {% if d.url %}<a href="{{ d.url }}">doi:{{ d.doi }}</a>{% else %}doi:{{ d.doi }}{% endif %}{% if d.licence %}, {{ d.licence }}{% endif %}{% if d.n %} [{{ d.n }}]{% endif %}{% if d.credit %}. {{ d.credit }}{% endif %}{% if d.with_refs %}; please also cite {{ d.with_refs|refs }}{% endif %}. <span class="note">({{ d.how }})</span></li>
+{% endfor %}</ul>
+{% endif %}
+</section>
+
+<section id="cite">
+<h2>How to cite</h2>
+<p>If you use these results, please cite the original works of each step:</p>
+<ul>
+{% for s in m.sections if s.refs %}<li><b>{{ s.title }}</b>: {{ s.refs|refs }}</li>
+{% endfor %}</ul>
+{% if m.datasets %}<p>and the data: {% for d in m.datasets %}{{ d.short or d.doi }} {% if d.n %}[{{ d.n }}]{% endif %}{% if d.with_refs %} with {{ d.with_refs|refs }}{% endif %}{% if not loop.last %}; {% endif %}{% endfor %}.</p>{% endif %}
+<p>The analysis ran on Pennsieve with these apps; name them with their versions in your methods so it can be reproduced:
+{% for a in m.apps_cited %}{{ a.app }} {{ a.version }}{% if a.repository %} ({% if pdf %}{{ a.repository }}{% else %}<a href="{{ a.repository }}">{{ a.repository }}</a>{% endif %}){% endif %}{% if not loop.last %}; {% endif %}{% endfor %}; eeg-report {{ m.version }}.</p>
+</section>
+
+{% if m.issues %}
+<section id="inputs">
+<h2>Notes on the inputs</h2>
+<p class="note">Places where a step's output does not follow the shared output contract (conventions.md). They do not
+change the results above; they are listed for the app maintainers.</p>
+<ul class="note">{% for i in m.issues %}<li><b>{{ i.step }}</b>: {{ i.problem }}</li>{% endfor %}</ul>
+</section>
+{% endif %}
+
+<footer>Written by Pennsieve eeg-report {{ m.version }} on {{ m.generated }}. {% if not pdf %}The same report as a PDF is <code>report.pdf</code> next to this file; the tables are in the <code>tables</code> output.{% endif %} Research output, not a clinical interpretation.</footer>
+</main>
+</body>
+</html>

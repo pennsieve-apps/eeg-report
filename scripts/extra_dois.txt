@@ -1,0 +1,23 @@
+# DOIs a step may cite that are not (yet) in a sibling CITATION.cff; fetched from the registries by
+# build_citations.py. Taken from workflow-scalp-eeg/docs/research/citations.md (verified table).
+10.1109/IEMBS.2001.1020545
+10.1111/epi.18113
+10.1007/s10548-014-0379-1
+10.1016/j.clinph.2011.09.023
+10.1111/j.1528-1157.1998.tb01329.x
+10.1111/epi.17482
+10.1038/s41593-020-00744-x
+10.1016/j.jneumeth.2011.06.008
+10.1016/j.cnp.2020.11.001
+10.1016/j.clinph.2007.07.019
+10.7554/eLife.70092
+10.1016/j.neuroimage.2009.10.003
+10.1016/j.nicl.2017.09.021
+10.5281/zenodo.10278399
+10.3389/fnins.2013.00267
+10.21105/joss.01896
+10.3389/fninf.2015.00016
+10.5281/zenodo.6363575
+10.1016/j.neuroimage.2019.05.026
+10.21105/joss.04484
+10.5281/zenodo.10259996
