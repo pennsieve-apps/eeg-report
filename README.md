@@ -98,7 +98,7 @@ All inputs use `placement: subfolder`; an app linked twice under different `LABE
   figures are PNG files in `figures/<step>/` next to it, so keep the folder together. Long warning lists show
   the first eight and fold the rest.
 - `report.pdf`: the same content on A4 (WeasyPrint, DejaVu fonts), everything unfolded, figures converted to
-  JPEG at most 1200 px wide so a report with 170 figures stays near 20 MB; every page footer repeats "research
+  JPEG at most 1200 px wide so a report with 210 figures stays near 25 MB; every page footer repeats "research
   output, not a clinical interpretation".
 - `summary.json` (recordings with the steps that cover them, counts, warnings) and `provenance.json`
   (conventions.md keys).
@@ -127,12 +127,14 @@ M-series Mac), read-only root, uid 65534, `--memory 2g`, `--network none`:
 
 | Input | Steps | Recordings | Figures shown | Wall time | Peak RSS | cgroup memory.peak | PDF |
 |---|---|---|---|---|---|---|---|
-| Siena demo (`scripts/run_demo.sh siena`) | eeg-prep, eeg-seizures, eeg-spikes, eeg-spectral, eeg-sleep | 41 | 173 | 16 s | 220 MB | 470 MB | 22 MB, 139 pages |
+| Siena demo (`scripts/run_demo.sh siena`) | all six (eeg-prep, eeg-seizures, eeg-spikes, eeg-spectral, eeg-sleep, eeg-connectivity) | 41 | 213 | 17 s | 257 MB | 582 MB | 26 MB, 169 pages |
+| CHB-MIT chb01 demo | eeg-prep, eeg-seizures, eeg-spikes, eeg-spectral, eeg-connectivity | 42 | 116 | 12 s | 193 MB | – | 17.5 MB |
+| ds003555 demo | eeg-prep, eeg-sleep, eeg-spikes, eeg-spectral, eeg-connectivity | 3 | 42 | 4 s | 152 MB | – | 4.0 MB |
 | Synthetic fixture | all six | 3 | 15 | 2.4 s | 106 MB | 98 MB | 0.1 MB |
 
 Memory grows with the largest figure and the PDF's layout, not with the EEG: the report never opens an EDF.
-Image: 297 MB, 71 MB compressed. Output size is dominated by the copied figures and tables (Siena: 140 MB
-report folder with every figure, 69 MB of tables, most of it eeg-seizures' per-second `probability.csv` and
+Image: 297 MB, 71 MB compressed. Output size is dominated by the copied figures and tables (Siena: 141 MB
+report folder with every figure, 77 MB of tables, most of it eeg-seizures' per-second `probability.csv` and
 eeg-spikes' `spikes.csv`).
 
 ## Limitations

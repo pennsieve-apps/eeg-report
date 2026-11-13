@@ -30,8 +30,8 @@ application:
     - quality-control
 runtime:
   # Measured (linux/amd64 under emulation on an M-series Mac, read-only root, uid 65534,
-  # --memory 2g): Siena demo, 41 recordings and 5 steps, 173 figures, HTML + 22 MB PDF in 16 s,
-  # 220 MB peak RSS (cgroup memory.peak 470 MB including page cache). Lambda-eligible as sized;
+  # --memory 2g): Siena demo, 41 recordings and all 6 steps, 213 figures, HTML + 26 MB PDF in 17 s,
+  # 257 MB peak RSS (cgroup memory.peak 582 MB including page cache). Lambda-eligible as sized;
   # 2048 MiB is the smallest Fargate size for 1 vCPU. See README "Runtime".
   cpu: 1024
   memory: 2048
