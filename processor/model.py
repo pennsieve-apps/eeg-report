@@ -53,12 +53,14 @@ def duration(s: Any) -> str:
 def fmt(v: Any, kind: str = "num") -> str:
     """A value as a person reads it: integers exactly, rates to two decimals, other numbers to four
     significant digits, 0-1 fractions as percentages (kind pct), durations (kind dur)."""
-    if v is None or v == "":
+    if (v is None or v == "") and kind != "annot":
         return "–"
     if isinstance(v, bool):
         return "yes" if v else "no"
     if kind == "dur":
         return duration(v)
+    if kind == "annot":
+        return "not annotated" if v is None or str(v).strip() == "" else fmt(v, "int")
     x = num(v)
     if kind == "text" or x is None:
         if isinstance(v, (list, tuple)):
@@ -208,6 +210,12 @@ def recordings_table(derivs: list[Derivative], steps: list[Step]) -> tuple[list[
     return list(rows.values()), extra
 
 
+def seizures_text(v: Any) -> str:
+    """Annotated seizures: a count, or "not annotated" when the source has no seizure labels at all
+    (eeg-prep leaves n_seizures empty then; 0 means labelled, none)."""
+    return "not annotated" if v is None or str(v).strip() == "" else fmt(v, "int")
+
+
 def lateral_of(row: dict[str, str]) -> str:
     for c in LATERAL_COLS:
         if row.get(c):
@@ -293,7 +301,7 @@ def qc_rows(qc_steps: list[Step], derivs: list[Derivative], rec_rows: dict[str, 
             "ica_var": fmt(d.get("ica_variance_removed_pct")),
             "bad_pct": fmt(bp),
             "bad_segment_pct": bp,
-            "seizures": fmt(d.get("n_seizures", rr.get("n_seizures")), "int"),
+            "seizures": seizures_text(rr["n_seizures"] if "n_seizures" in rr else d.get("n_seizures")),
             "dropped": ", ".join(x for x in d.get("_dropped", []) if x),
         })
     totals = {
@@ -312,14 +320,14 @@ def qc_rows(qc_steps: list[Step], derivs: list[Derivative], rec_rows: dict[str, 
 # ----------------------------------------------------------------------------- per-step pieces
 
 def headline(app: str, recs: dict[str, dict[str, Any]], rec_rows: dict[str, dict[str, str]],
-             order: list[str]) -> dict[str, Any] | None:
+             order: list[str], no_peak: set[str] | None = None) -> dict[str, Any] | None:
     spec = A.APPS.get(app, {}).get("headline") or []
     cols = []
     for label, key, kind in spec:
         if key.startswith("@"):
             if any(lateral_of(rec_rows.get(rid, {})) for rid in recs):
                 cols.append((label, key, kind))
-        elif any(r.get(key) is not None for r in recs.values()):
+        elif any(r.get(key) is not None or (kind == "annot" and key in r) for r in recs.values()):
             cols.append((label, key, kind))
     if not [c for c in cols if c[2] != "text" and not c[1].startswith("@")]:
         cols = generic_cols(recs)
@@ -333,7 +341,12 @@ def headline(app: str, recs: dict[str, dict[str, Any]], rec_rows: dict[str, dict
         cells = []
         for _, key, kind in cols:
             v = lateral_of(rec_rows.get(rid, {})) if key.startswith("@") else r.get(key)
-            cells.append(fmt(v, kind))
+            if key == "pdr_hz" and v is None and rid in (no_peak or set()):
+                cells.append("no clear peak")
+            elif kind == "bool":
+                cells.append("–" if v is None else ("yes" if v in (True, "true", "True", 1) else "no"))
+            else:
+                cells.append(fmt(v, kind))
         rows.append([rid] + cells)
     return {"header": ["Recording"] + [c[0] for c in cols], "kinds": ["text"] + [c[2] for c in cols], "rows": rows}
 
@@ -624,7 +637,7 @@ def build(found: Found, params: dict[str, Any], version: str) -> dict[str, Any]:
             "montage": r.get("montage", "") or "–", "reference": r.get("reference", ""),
             "channels": (f"{r.get('n_good')} of {r.get('n_channels')}" if r.get("n_channels") else "–"),
             "sfreq": fmt(r.get("sfreq")) if r.get("sfreq") else "–",
-            "seizures": r.get("n_seizures", "") or "–", "age": r.get("age", ""), "sex": r.get("sex", ""),
+            "seizures": seizures_text(r.get("n_seizures")), "age": r.get("age", ""), "sex": r.get("sex", ""),
             "source_format": r.get("source_format", ""),
             "extra": [r.get(c, "") for c in extra_cols], "steps": covered.get(rid, []),
         })
@@ -760,6 +773,13 @@ def build(found: Found, params: dict[str, Any], version: str) -> dict[str, Any]:
     }
 
 
+def no_clear_pdr(step: Step) -> set[str]:
+    """Recordings whose pdr.csv says there was no clear posterior dominant rhythm."""
+    p = find_file(step, "pdr.csv")
+    return {r["recording_id"] for r in (read_table(p) if p else [])
+            if r.get("recording_id") and not r.get("pdr_hz") and "no clear peak" in (r.get("method") or "").lower()}
+
+
 def build_section(s: Step, rec_rows: dict[str, dict[str, str]], order: list[str], issues: list[dict[str, str]],
                   params: dict[str, Any]) -> dict[str, Any]:
     info = A.APPS.get(s.app, {})
@@ -801,7 +821,8 @@ def build_section(s: Step, rec_rows: dict[str, dict[str, str]], order: list[str]
         "notices": notices_of(s), "licence": licence_of(s),
         "warnings": warnings, "warnings_visible": WARN_VISIBLE, "skipped": skipped,
         "n_recordings": len(recs),
-        "headline": headline(s.app, recs, rec_rows, order_here) if s.app != "eeg-prep" else None,
+        "headline": (headline(s.app, recs, rec_rows, order_here, no_clear_pdr(s) if s.app == "eeg-spectral" else None)
+                     if s.app != "eeg-prep" else None),
         "scores": seizure_scores(s) if s.app == "eeg-seizures" else None,
         "extra_tables": extra_tables,
         "figures": figs[:max_f], "omitted": figs[max_f:], "missing": missing,

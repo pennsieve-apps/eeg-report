@@ -21,8 +21,9 @@ The last step of both scalp EEG workflows:
 read, keep with the data and send to a colleague: an HTML page that opens offline and the same report as a PDF.
 It opens with a box saying what everything in it is: **research output, not a clinical interpretation**. Then:
 
-1. **Recordings**: every recording eeg-prep read (duration, kind, montage, good channels, annotated seizures, age,
-   sex, and any recording-level label such as an annotated lateralisation), which steps have results for it, and
+1. **Recordings**: every recording eeg-prep read (duration, kind, montage, good channels, annotated seizures,
+   where the labels came from, age, sex, and any recording-level label such as an annotated lateralisation; a
+   recording whose source has no seizure labels at all reads "not annotated", never 0), which steps have results for it, and
    an **at-a-glance** table with one headline number per step per recording.
 2. **Data quality**: per recording the bad channels by name, the ICA components removed and what ICLabel called
    them (eye blink, muscle, ...), the share of variance they carried, and the percentage of the recording marked
@@ -32,11 +33,12 @@ It opens with a box saying what everything in it is: **research output, not a cl
    - **Seizure detection**: event-based and sample-based **sensitivity, precision, F1 and false detections per
      day, side by side** (SzCORE scoring), pooled and per subject, and per recording the candidates, the
      annotated seizures found and the false detections. Always labelled as candidates for review.
-   - **Interictal spikes**: event rate, top channel, left/right/midline events and the laterality index, labelled
+   - **Interictal spikes**: event rate, top channel, left/right/midline events, the most frequent leading channel
+     and its region, and the laterality index, labelled
      as **the side with more detected events** (never as a localisation), next to the annotated side when the
      source data has one; rates per sleep stage when a hypnogram was linked.
    - **Spectral biomarkers**: posterior dominant rhythm (frequency, amplitude, asymmetry, what it was measured
-     on), revised Brain Symmetry Index, aperiodic exponent, theta/alpha ratio.
+     on, "no clear peak" when eeg-spectral found none, and whether its estimates disagree), revised Brain Symmetry Index, aperiodic exponent, theta/alpha ratio.
    - **Sleep**: hypnogram statistics (TST, sleep efficiency, latency, WASO, stage percentages, staging
      confidence, spindle and slow-wave densities).
    - **Connectivity**: hemispheric asymmetry per band and measure, mean connectivity.
@@ -127,9 +129,9 @@ M-series Mac), read-only root, uid 65534, `--memory 2g`, `--network none`:
 
 | Input | Steps | Recordings | Figures shown | Wall time | Peak RSS | cgroup memory.peak | PDF |
 |---|---|---|---|---|---|---|---|
-| Siena demo (`scripts/run_demo.sh siena`) | all six | 41 (eeg-sleep: 35, six recordings < 60 min skipped by design) | 214 | 17 s | 265 MB | 622 MB | 25 MB, 173 pages |
-| CHB-MIT chb01 demo | all six | 42 (eeg-sleep: 39) | 211 | 16 s | 242 MB | 508 MB | 26 MB, 183 pages |
-| ds003555 demo | eeg-prep, eeg-sleep, eeg-spikes, eeg-spectral, eeg-connectivity | 3 | 42 | 3.5 s | 152 MB | – | 4 MB, 36 pages |
+| Siena demo (`scripts/run_demo.sh siena`) | all six | 41 (eeg-sleep: 35, six recordings < 60 min skipped by design) | 214 | 16 s | 267 MB | 623 MB | 25 MB, 174 pages |
+| CHB-MIT chb01 demo | all six | 42 (eeg-sleep: 39) | 211 | 15 s | 244 MB | 527 MB | 25 MB, 176 pages |
+| ds003555 demo | all six (no seizures annotated: scores left out) | 3 | 44 | 3.3 s | 155 MB | 193 MB | 4 MB, 39 pages |
 | Synthetic fixture | all six | 3 | 15 | 2.4 s | 106 MB | 98 MB | 0.3 MB |
 
 Memory grows with the largest figure and the PDF's layout, not with the EEG: the report never opens an EDF.

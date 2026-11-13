@@ -132,14 +132,16 @@ def eeg_prep(eeg: Path, qc: Path) -> None:
         "Name": "eeg-prep derivative", "BIDSVersion": "1.10.0", "DatasetType": "derivative",
         "GeneratedBy": [{"Name": "eeg-prep", "Version": "0.1.0"}], "SourceDatasets": [{"URL": "n/a"}]})
     cols = ["recording_id", "subject", "session", "task", "run", "path", "sfreq", "n_channels", "n_good", "duration_s",
-            "montage", "reference", "kind", "start_time", "n_seizures", "source_format", "age", "sex", "lateralisation"]
+            "montage", "reference", "kind", "start_time", "labels_source", "n_seizures", "source_format", "age", "sex",
+            "lateralisation"]
     rows = []
     for r in RECS:
         stem = r["recording_id"]
         rel = f"sub-{r['subject']}/eeg/{stem}_desc-preproc_eeg.edf"
         rows.append([stem, r["subject"], "", "eeg", r["run"], rel, 256, r["n_channels"], r["n_good"], r["duration_s"],
                      r["montage"], "average" if r["montage"] == "average" else "", r["kind"],
-                     "2020-01-01T22:00:00+00:00", r["n_seizures"], "edf", r["age"], r["sex"], r["lateralisation"]])
+                     "2020-01-01T22:00:00", "events.tsv" if r["n_seizures"] else "",
+                     r["n_seizures"] if r["n_seizures"] else "", "edf", r["age"], r["sex"], r["lateralisation"]])
         edf(eeg / rel)
         base = eeg / f"sub-{r['subject']}" / "eeg" / f"{stem}_desc-preproc"
         wcsv(Path(str(base) + "_channels.tsv"), ["name", "type", "units", "status"],
@@ -244,16 +246,17 @@ def eeg_spikes(top: Path) -> None:
         IDS[0]: {"minutes_analysed": 18.5, "n_channels": 18, "montage": "bipolar", "n_spikes": 120, "n_events": 80,
                  "events_per_min": 4.324, "top_channel": "F7-T7", "top_channel_rate_per_min": 2.1,
                  "laterality_index": 0.6, "n_left": 56, "n_right": 14, "n_midline": 10,
-                 "dominant_region": "left temporal", "events_per_min_by_stage": {"W": 3.1, "N2": 5.5}},
+                 "most_frequent_leader_region": "left temporal", "most_frequent_leading_channel": "F7-T7",
+                 "events_per_min_by_stage": {"W": 3.1, "N2": 5.5}},
         IDS[1]: {"minutes_analysed": 140.0, "n_channels": 18, "montage": "bipolar", "n_spikes": 900, "n_events": 600,
                  "events_per_min": 4.286, "top_channel": "T7-P7", "top_channel_rate_per_min": 1.9,
                  "laterality_index": 0.42, "n_left": 380, "n_right": 155, "n_midline": 65,
-                 "dominant_region": "left temporal", "events_per_min_by_stage": {"W": 2.0, "N2": 4.0, "N3": 7.25, "R": 1.5},
+                 "most_frequent_leader_region": "left temporal", "events_per_min_by_stage": {"W": 2.0, "N2": 4.0, "N3": 7.25, "R": 1.5},
                  "nrem_wake_ratio": 2.6},
         IDS[2]: {"minutes_analysed": 59.0, "n_channels": 18, "montage": "bipolar", "n_spikes": 30, "n_events": 25,
                  "events_per_min": 0.424, "top_channel": "F8-T8", "top_channel_rate_per_min": 0.2,
                  "laterality_index": -0.5, "n_left": 5, "n_right": 15, "n_midline": 5,
-                 "dominant_region": "right temporal"},
+                 "most_frequent_leader_region": "right temporal"},
     }
     wcsv(top / "spikes.csv", ["recording_id", "channel", "time_s", "amplitude_uv", "duration_ms", "detector",
                               "sleep_stage"], [[IDS[0], "F7-T7", 12.5, 120, 60, "janca", "W"]])
@@ -285,7 +288,7 @@ def eeg_spectral(top: Path, label: str = "") -> None:
         IDS[0]: {"montage": "average", "n_channels": 19, "seconds_analysed": 1100.0, "pdr_hz": 9.75,
                  "pdr_amplitude_uv": 22.5, "pdr_asymmetry": 0.05, "pdr_reactivity": None, "pdr_basis": "all",
                  "rbsi": 0.083, "rbsi_signed": 0.061, "aperiodic_exponent_median": 1.21, "theta_alpha_ratio_median": 0.9,
-                 "relpow_alpha_posterior": 0.31, "low_r_squared_channels": 1},
+                 "relpow_alpha_posterior": 0.31, "low_r_squared_channels": 1, "pdr_estimates_disagree": True},
         IDS[1]: {"montage": "average", "n_channels": 19, "seconds_analysed": 8500.0, "pdr_hz": 8.5,
                  "pdr_amplitude_uv": 18.0, "pdr_asymmetry": 0.2, "pdr_reactivity": None, "pdr_basis": "all",
                  "rbsi": 0.12, "rbsi_signed": 0.1, "aperiodic_exponent_median": 1.45, "theta_alpha_ratio_median": 1.2,
@@ -301,7 +304,10 @@ def eeg_spectral(top: Path, label: str = "") -> None:
                          ("pdr.csv", ["recording_id", "pdr_hz", "pdr_amplitude_uv", "pdr_left_hz", "pdr_right_hz",
                                       "asymmetry", "reactivity", "n_eyes_closed_s", "method"]),
                          ("asymmetry.csv", ["recording_id", "pair", "band", "bsi"])):
-        wcsv(top / name, header, [[IDS[0]] + ["1"] * (len(header) - 1)])
+        rows = [[IDS[0]] + ["1"] * (len(header) - 1)]
+        if name == "pdr.csv":
+            rows.append([IDS[2], "", "", "", "", "", "", "0", "specparam peak 6-14 Hz, O1/O2; no clear peak"])
+        wcsv(top / name, header, rows)
     figs = []
     for i, rid in enumerate(IDS):
         png(top / "figures" / f"{rid}_psd.png", f"{rid}: PSD")
@@ -332,6 +338,7 @@ def eeg_sleep(top: Path) -> None:
     png(top / "figures" / f"{IDS[1]}_hypnogram.png", "hypnogram")
     wjson(top / "summary.json", {
         "app": "eeg-sleep", "version": "0.1.0", "recordings": recs,
+        "notice": "Sleep stages are scored automatically from EEG only: research output, not a clinical sleep scoring.",
         "figures": [{"path": f"figures/{IDS[1]}_hypnogram.png", "caption": "Hypnogram (test)."}],
         "tables": [{"path": "hypnogram.csv", "caption": "Hypnogram."}, {"path": "sleep_stats.csv", "caption": "Stats."}],
         "warnings": [f"{IDS[2]}: mean staging confidence 61% (< 70%): review the hypnogram"]})

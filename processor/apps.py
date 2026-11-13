@@ -8,7 +8,7 @@ summary.json and provenance.json; an app that is not listed here is rendered gen
 
 Headline columns are (label, key, kind); kind is how the number is written: `int`, `num` (four
 significant digits), `rate` (two decimals), `pct` (a 0-1 fraction as a percentage), `dur` (seconds
-as a duration), `text`. Columns whose key no recording has are left out, so an app that renames a
+as a duration), `bool`, `annot` (a count, or "not annotated" when empty), `text`. Columns whose key no recording has are left out, so an app that renames a
 key loses one column, not the section; when none of them is present the section falls back to the
 generic table.
 """
@@ -63,7 +63,7 @@ APPS: dict[str, dict] = {
         "headline": [
             ("Hours", "duration_h", "num"),
             ("Montage", "montage", "text"),
-            ("Annotated seizures", "n_annotated_seizures", "int"),
+            ("Annotated seizures", "n_annotated_seizures", "annot"),
             ("Candidates", "n_detections", "int"),
             ("Annotated seizures detected", "seizures_detected", "int"),
             ("False detections", "false_detections", "int"),
@@ -101,7 +101,9 @@ APPS: dict[str, dict] = {
             ("Midline events", "n_midline", "int"),
             ("Laterality index (side with more detected events)", "laterality_index", "num"),
             ("Annotated side", "@lateralisation", "text"),  # from recordings.csv, when the source has it
-            ("Region with most detected events", "dominant_region", "text"),
+            ("Most frequent region of the leading channel", "most_frequent_leader_region", "text"),
+            ("Region with most detected events", "dominant_region", "text"),  # before eeg-spikes d34411f
+            ("Most frequent leading channel", "most_frequent_leading_channel", "text"),
             ("NREM / wake rate", "nrem_wake_ratio", "num"),
         ],
         "by_stage": "events_per_min_by_stage",
@@ -127,6 +129,7 @@ APPS: dict[str, dict] = {
             ("PDR asymmetry", "pdr_asymmetry", "num"),
             ("PDR reactivity", "pdr_reactivity", "num"),
             ("PDR measured on", "pdr_basis", "text"),
+            ("PDR estimates disagree", "pdr_estimates_disagree", "bool"),
             ("rBSI", "rbsi", "num"),
             ("rBSI signed (L−R)", "rbsi_signed", "num"),
             ("Aperiodic exponent (median)", "aperiodic_exponent_median", "num"),
@@ -193,7 +196,7 @@ APPS: dict[str, dict] = {
 GLANCE = [
     ("Bad segments (%)", "eeg-prep", "bad_segment_pct", "num"),
     ("Bad channels", "eeg-prep", "n_bad_channels", "int"),
-    ("Annotated seizures", "eeg-seizures", "n_annotated_seizures", "int"),
+    ("Annotated seizures", "eeg-seizures", "n_annotated_seizures", "annot"),
     ("Annotated seizures detected", "eeg-seizures", "seizures_detected", "int"),
     ("False detections", "eeg-seizures", "false_detections", "int"),
     ("Spike events / min", "eeg-spikes", "events_per_min", "rate"),

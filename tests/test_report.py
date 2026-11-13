@@ -67,6 +67,11 @@ def test_full_linked_report(linked: Path, tmp_path: Path) -> None:
     assert "not a localisation of the epileptogenic zone" in t
     assert "Annotated side" in t and "left temporal" in t
     assert "Spike events per minute by sleep stage" in t
+    assert "Most frequent region of the leading channel" in t and "Region with most detected events" not in t
+    assert "no clear peak" in t and "PDR estimates disagree" in t
+    assert "not annotated" in t and "Labels source" in t
+    # Every step's notice box (eeg-seizures' `note`, the others' `notice`).
+    assert page.count("<h4>Read this first</h4>") == 5
     # Spectral, sleep, connectivity headline numbers.
     assert "PDR (Hz)" in t and "9.75" in t and "rBSI" in t
     assert "TST (min)" in t and "120" in t
