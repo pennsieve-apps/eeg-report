@@ -238,7 +238,7 @@ def qc_rows(qc_steps: list[Step], derivs: list[Derivative], rec_rows: dict[str, 
                 item, status = row.get("item", ""), row.get("status", "")
                 if item == "channel" and status == "bad":
                     d.setdefault("_bad", []).append(row.get("name", ""))
-                elif item == "channel" and status in ("dropped", "removed", "excluded"):
+                elif item in ("channel", "dropped") and status in ("dropped", "removed", "excluded"):
                     d.setdefault("_dropped", []).append(row.get("name", ""))
                 elif item in ("ica_component", "component") and status == "removed":
                     d.setdefault("_ica", []).append(row.get("iclabel_label") or row.get("reason") or "artifact")

@@ -7,12 +7,16 @@ WORKDIR /processor
 # WeasyPrint lays out text with Pango/HarfBuzz/fontconfig (Debian packages, pinned) and the DejaVu
 # fonts. The fontconfig cache is built here into /var/cache/fontconfig (read-only at run time is
 # fine); anything fontconfig wants to write at run time goes to $XDG_CACHE_HOME under $TMPDIR.
+# Debian's documentation is removed except each package's copyright file (/usr/share/doc/*/copyright),
+# which the LGPL/MIT/FTL licences of the bundled libraries ask to ship with the binaries.
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
        libpango-1.0-0=1.50.12+ds-1 libpangoft2-1.0-0=1.50.12+ds-1 libharfbuzz-subset0=6.0.0+dfsg-3 \
        fontconfig=2.14.1-4 fonts-dejavu-core=2.37-6 \
     && fc-cache -f \
-    && rm -rf /var/lib/apt/lists/* /usr/share/doc/* /usr/share/man/*
+    && rm -rf /var/lib/apt/lists/* /usr/share/man/* \
+    && find /usr/share/doc -mindepth 1 ! -type d ! -name copyright -delete \
+    && find /usr/share/doc -mindepth 1 -type d -empty -delete
 
 # Pinned Python dependencies, binary wheels only, no dependency resolution at build time.
 # Pyphen's hyphenation dictionaries (LibreOffice, GPL/LGPL/MPL) are removed: the report never

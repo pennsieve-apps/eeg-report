@@ -165,7 +165,7 @@ def eeg_prep(eeg: Path, qc: Path) -> None:
     top = qc / "eeg-prep"
     qrows = [[IDS[0], "channel", c, c + "-Avg", "EEG", "bad" if c == "T7" else "good",
               "high-frequency noise (z > 5)" if c == "T7" else "", "", "", "", ""] for c in CHANNELS]
-    qrows += [[IDS[0], "channel", "ECG", "ECG", "ECG", "dropped", "not EEG", "", "", "", ""],
+    qrows += [[IDS[0], "dropped", "ECG", "ECG", "ECG", "dropped", "not EEG", "", "", "", ""],
               [IDS[0], "ica_component", "IC00", "", "ICA", "removed", "eye blink 0.99", "eye blink", "0.99", "", ""],
               [IDS[0], "ica_component", "IC01", "", "ICA", "kept", "brain 0.9", "brain", "0.9", "", ""],
               [IDS[0], "ica_component", "IC03", "", "ICA", "removed", "muscle 0.85", "muscle artifact", "0.85", "", ""],
