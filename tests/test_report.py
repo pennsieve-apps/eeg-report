@@ -250,3 +250,34 @@ def test_pdf(linked: Path, tmp_path: Path) -> None:
     assert rc == 0
     pdf = (rep / "report.pdf").read_bytes()
     assert pdf.startswith(b"%PDF") and len(pdf) > 20_000
+
+
+def test_pdf_footer_title_is_css_escaped() -> None:
+    from processor.render import css_string, html
+
+    assert str(css_string('A & B "x" </style>')) == 'A & B \\22 x\\22  \\3c /style\\3e '
+    page = html({"title": "EEG & sleep", "sections": [], "recordings": [], "glance": {"rows": [], "cols": []},
+                 "licences": [], "datasets": [], "references": [], "issues": [], "acknowledgements": [],
+                 "apps_cited": [], "workflows": [], "warnings_total": 0, "generated": "", "version": "0",
+                 "parameters": {}, "extra_cols": []}, pdf=True)
+    assert 'content: "EEG & sleep · research' in page
+
+
+def test_only_eeg_port_copies_no_derivative_tsvs(tmp_path: Path) -> None:
+    inp = F.write(tmp_path / "in", "linked", apps=[])
+    shutil.rmtree(inp / "qc")
+    rc, _, _ = run(inp, tmp_path / "out")
+    assert rc == 0
+    tab = tmp_path / "out" / "tables" / "eeg-report"
+    assert (tab / "recordings.csv").is_file()
+    assert not list(tab.rglob("*_channels.tsv")) and not list(tab.rglob("*_events.tsv"))
+
+
+def test_one_subject_singular_and_true_median(linked: Path, tmp_path: Path) -> None:
+    rc, page, _ = run(linked, tmp_path / "out")
+    t = text(page)
+    assert "(1 subject)" in t and "(1 subjects)" not in t
+    # Bad segments 5, 5, 1 % -> median 5; drop one recording's value for an even count.
+    from processor.model import median
+    assert median([1.0, 5.0, 5.0, 9.0]) == 5.0 and median([1.0, 3.0]) == 2.0
+    assert "Annotated seizures detected" in t

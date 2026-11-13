@@ -62,7 +62,7 @@ summary { cursor: pointer; color: var(--accent); }
 footer { margin-top: 48px; color: var(--faint); font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 10px; }
 {% if pdf %}
 @page { size: A4; margin: 15mm 12mm 16mm 12mm;
-  @bottom-left { content: "{{ m.title|replace('"', "'") }} · research output, not a clinical interpretation"; font-size: 7pt; color: #6b7280; font-family: "DejaVu Sans", sans-serif; }
+  @bottom-left { content: "{{ m.title|css_string }} · research output, not a clinical interpretation"; font-size: 7pt; color: #6b7280; font-family: "DejaVu Sans", sans-serif; }
   @bottom-right { content: "page " counter(page) " of " counter(pages); font-size: 7pt; color: #6b7280; font-family: "DejaVu Sans", sans-serif; } }
 body { font-size: 9.5pt; line-height: 1.4; }
 main { max-width: none; padding: 0; }

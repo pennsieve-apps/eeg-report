@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import math
 import re
+from statistics import median
 from collections import Counter
 from pathlib import Path, PurePosixPath
 from typing import Any
@@ -301,7 +302,7 @@ def qc_rows(qc_steps: list[Step], derivs: list[Derivative], rec_rows: dict[str, 
         "bad_channels": sum(int(num(r["n_bad_channels"]) or 0) for r in rows),
         "ica_total": len(all_ica),
         "ica_classes": _ica_classes(all_ica),
-        "bad_pct_median": fmt(sorted(bad_pcts)[len(bad_pcts) // 2] if bad_pcts else None),
+        "bad_pct_median": fmt(median(bad_pcts) if bad_pcts else None),
         "bad_pct_max": fmt(max(bad_pcts) if bad_pcts else None),
         "has_dropped": any(r["dropped"] for r in rows),
     }
@@ -432,7 +433,7 @@ def seizure_scores(step: Step) -> dict[str, Any] | None:
         if not v:
             continue
         n_sub = v.get("n_subjects")
-        rows.append([label + (f" ({fmt(n_sub, 'int')} subjects)" if n_sub is not None and agg == "subject_mean" else ""),
+        rows.append([label + (f" ({fmt(n_sub, 'int')} subject{'' if num(n_sub) == 1 else 's'})" if n_sub is not None and agg == "subject_mean" else ""),
                      fmt(v.get("sensitivity"), "pct"), fmt(v.get("precision"), "pct"), fmt(v.get("f1")),
                      fmt(v.get("fp_per_day"), "rate"), fmt(v.get("n_reference"), "int"), fmt(v.get("tp"), "int"),
                      fmt(v.get("fp"), "int"), fmt(v.get("hours"))])
@@ -649,6 +650,10 @@ def build(found: Found, params: dict[str, Any], version: str) -> dict[str, Any]:
         sections.append(build_section(s, rec_rows, order, issues, params))
     if qc_steps_for_section:
         sections[0]["qc"] = {"rows": qc_rows_, "totals": qc_tot}
+        if not qc_steps:
+            # eeg-prep's provenance standing in for its qc output: the derivative's own TSVs
+            # (channels, events per recording) are not step tables to copy.
+            sections[0]["tables"] = []
         for extra in sections[1:len(qc_steps_for_section)]:
             extra["qc_extra"] = True
 

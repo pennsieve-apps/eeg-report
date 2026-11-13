@@ -130,7 +130,7 @@ M-series Mac), read-only root, uid 65534, `--memory 2g`, `--network none`:
 | Siena demo (`scripts/run_demo.sh siena`) | all six | 41 (eeg-sleep: 35, six recordings < 60 min skipped by design) | 214 | 17 s | 265 MB | 622 MB | 25 MB, 173 pages |
 | CHB-MIT chb01 demo | all six | 42 (eeg-sleep: 39) | 211 | 16 s | 242 MB | 508 MB | 26 MB, 183 pages |
 | ds003555 demo | eeg-prep, eeg-sleep, eeg-spikes, eeg-spectral, eeg-connectivity | 3 | 42 | 3.5 s | 152 MB | – | 4 MB, 36 pages |
-| Synthetic fixture | all six | 3 | 15 | 2.4 s | 106 MB | 98 MB | 0.1 MB |
+| Synthetic fixture | all six | 3 | 15 | 2.4 s | 106 MB | 98 MB | 0.3 MB |
 
 Memory grows with the largest figure and the PDF's layout, not with the EEG: the report never opens an EDF.
 Image: 297 MB, 71 MB compressed. Output size is dominated by the copied figures and tables (Siena: 155 MB
@@ -172,7 +172,7 @@ MarkupSafe (BSD-3-Clause), WeasyPrint and its CourtBouillon libraries (BSD-3-Cla
 fontTools (MIT), Pyphen (code only, used under its MPL 1.1 option; its dictionaries are removed), and the Debian
 Pango/HarfBuzz/fontconfig/FreeType/GLib libraries and DejaVu fonts. The figures, numbers and tables in a report
 belong to the steps that made them and to the data's licence (Siena BIDS: CC BY 4.0; CHB-MIT: ODC-By 1.0;
-ds003555: CC0).
+ds003555: CC0; Siena on PhysioNet: CC BY 4.0).
 
 ## Citations
 

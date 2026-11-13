@@ -194,7 +194,7 @@ GLANCE = [
     ("Bad segments (%)", "eeg-prep", "bad_segment_pct", "num"),
     ("Bad channels", "eeg-prep", "n_bad_channels", "int"),
     ("Annotated seizures", "eeg-seizures", "n_annotated_seizures", "int"),
-    ("Seizures detected", "eeg-seizures", "seizures_detected", "int"),
+    ("Annotated seizures detected", "eeg-seizures", "seizures_detected", "int"),
     ("False detections", "eeg-seizures", "false_detections", "int"),
     ("Spike events / min", "eeg-spikes", "events_per_min", "rate"),
     ("Spike laterality index (side with more detected events)", "eeg-spikes", "laterality_index", "num"),
@@ -206,10 +206,11 @@ GLANCE = [
     ("wPLI alpha asymmetry", "eeg-connectivity", "wpli_alpha_asymmetry", "num"),
 ]
 
-# Known datasets: who made them, their licence (as conventions.md and the data README give them),
+# Known datasets: who made them, their licence (as conventions.md, the data README and the PhysioNet
+# pages give them),
 # and the works their authors ask to be cited with them.
 DATASETS = {
-    "10.13026/5d4a-j060": {"credit": "Paolo Detti and colleagues, University of Siena", "licence": "",
+    "10.13026/5d4a-j060": {"credit": "Paolo Detti and colleagues, University of Siena", "licence": "CC BY 4.0",
                            "with": ["10.3390/pr8070846", "10.1161/01.cir.101.23.e215"]},
     "10.5281/zenodo.10640762": {"credit": "BIDS conversion by Jonathan Dan and colleagues, EPFL", "licence": "CC BY 4.0",
                                 "with": ["10.13026/5d4a-j060", "10.3390/pr8070846", "10.1161/01.cir.101.23.e215"]},

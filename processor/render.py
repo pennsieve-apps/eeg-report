@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+from markupsafe import Markup
 
 from processor.model import duration, fmt
 
@@ -56,10 +57,22 @@ def plain(v: Any) -> str:
     return "" if v is None else str(v)
 
 
+def css_string(v: Any) -> Markup:
+    """Text for inside a double-quoted CSS string in a <style> element: CSS escapes, not HTML
+    entities (an & stays an &), and nothing that could close the string or the element."""
+    out = []
+    for ch in str(v or ""):
+        if ch in '"\\' or ch in "<>" or ord(ch) < 32:
+            out.append(f"\\{ord(ch):x} ")
+        else:
+            out.append(ch)
+    return Markup("".join(out))
+
+
 def environment() -> Environment:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES)), autoescape=select_autoescape(["html", "j2"]),
                       trim_blocks=True, lstrip_blocks=True)
-    env.filters.update(duration=duration, mb=mb, refs=refs, plain=plain, num=fmt)
+    env.filters.update(duration=duration, mb=mb, refs=refs, plain=plain, num=fmt, css_string=css_string)
     return env
 
 
