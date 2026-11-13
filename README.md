@@ -127,14 +127,14 @@ M-series Mac), read-only root, uid 65534, `--memory 2g`, `--network none`:
 
 | Input | Steps | Recordings | Figures shown | Wall time | Peak RSS | cgroup memory.peak | PDF |
 |---|---|---|---|---|---|---|---|
-| Siena demo (`scripts/run_demo.sh siena`) | all six (eeg-prep, eeg-seizures, eeg-spikes, eeg-spectral, eeg-sleep, eeg-connectivity) | 41 | 213 | 17 s | 257 MB | 582 MB | 26 MB, 169 pages |
-| CHB-MIT chb01 demo | eeg-prep, eeg-seizures, eeg-spikes, eeg-spectral, eeg-connectivity | 42 | 116 | 12 s | 193 MB | – | 17.5 MB |
-| ds003555 demo | eeg-prep, eeg-sleep, eeg-spikes, eeg-spectral, eeg-connectivity | 3 | 42 | 4 s | 152 MB | – | 4.0 MB |
+| Siena demo (`scripts/run_demo.sh siena`) | all six | 41 (eeg-sleep: 35, six recordings < 60 min skipped by design) | 214 | 17 s | 265 MB | 622 MB | 25 MB, 173 pages |
+| CHB-MIT chb01 demo | all six | 42 (eeg-sleep: 39) | 211 | 16 s | 242 MB | 508 MB | 26 MB, 183 pages |
+| ds003555 demo | eeg-prep, eeg-sleep, eeg-spikes, eeg-spectral, eeg-connectivity | 3 | 42 | 3.5 s | 152 MB | – | 4 MB, 36 pages |
 | Synthetic fixture | all six | 3 | 15 | 2.4 s | 106 MB | 98 MB | 0.1 MB |
 
 Memory grows with the largest figure and the PDF's layout, not with the EEG: the report never opens an EDF.
-Image: 297 MB, 71 MB compressed. Output size is dominated by the copied figures and tables (Siena: 141 MB
-report folder with every figure, 77 MB of tables, most of it eeg-seizures' per-second `probability.csv` and
+Image: 297 MB, 71 MB compressed. Output size is dominated by the copied figures and tables (Siena: 155 MB
+report folder with every figure, 95 MB of tables, most of it eeg-seizures' per-second `probability.csv` and
 eeg-spikes' `spikes.csv`).
 
 ## Limitations

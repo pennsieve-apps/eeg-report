@@ -1464,6 +1464,7 @@
    "cited_by": [
     "eeg-prep",
     "eeg-spectral",
+    "eeg-spikes",
     "eeg-sleep",
     "eeg-connectivity",
     "eeg-report"
@@ -2095,6 +2096,7 @@
     "eeg-spectral",
     "eeg-spikes",
     "eeg-seizures",
+    "eeg-sleep",
     "eeg-connectivity",
     "eeg-report"
    ]
@@ -2164,6 +2166,7 @@
    "cited_by": [
     "eeg-prep",
     "eeg-spectral",
+    "eeg-spikes",
     "eeg-sleep",
     "eeg-connectivity",
     "eeg-report"

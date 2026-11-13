@@ -457,7 +457,7 @@ def step_warnings(step: Step) -> tuple[list[str], list[dict[str, Any]]]:
             msg = f"{rid}: {w}"
             if msg not in out:
                 out.append(msg)
-    skipped: dict[str, list[str]] = {}
+    skipped: dict[str, dict[str, list[str]]] = {}
     prov_recs = step.provenance.get("recordings")
     for rid, r in (prov_recs.items() if isinstance(prov_recs, dict) else []):
         if not isinstance(r, dict):
@@ -469,8 +469,14 @@ def step_warnings(step: Step) -> tuple[list[str], list[dict[str, Any]]]:
             if msg not in out:
                 out.append(msg)
         elif status and status not in OK_STATUS:
-            skipped.setdefault(f"{status}: {reason}" if reason else status, []).append(rid)
-    groups = [{"reason": k, "ids": v} for k, v in skipped.items()]
+            text = f"{status}: {reason}" if reason else status
+            # Reasons that differ only in their numbers ("43.8 min < 60") are one group.
+            key = re.sub(r"\d+(\.\d+)?", "#", text)
+            g = skipped.setdefault(key, {"texts": [], "ids": []})
+            g["texts"].append(text)
+            g["ids"].append(rid)
+    groups = [{"reason": g["texts"][0] + (" (and similar)" if len(set(g["texts"])) > 1 else ""), "ids": g["ids"]}
+              for g in skipped.values()]
     return out, groups
 
 
