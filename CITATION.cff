@@ -1,0 +1,167 @@
+cff-version: 1.2.0
+message: If you use this app, please cite it and the works it builds on, listed under references.
+type: software
+title: eeg-report
+abstract: 'HTML and PDF report of the scalp EEG workflows (Scalp EEG Interictal Biomarkers; Scalp EEG Seizure Detection
+  & Monitoring): a recordings table, data quality from eeg-prep, and one section per linked step (seizure detection
+  scores, spike rates and laterality, spectral biomarkers, sleep statistics, connectivity asymmetry) with the figures
+  and captions each step wrote, warnings, licence notices and references, plus a tables folder. Rendered with Jinja
+  and WeasyPrint. Research output, not a clinical interpretation.'
+authors:
+- name: Pennsieve (University of Pennsylvania)
+contact:
+- given-names: Joost
+  family-names: Wagenaar
+  orcid: https://orcid.org/0009-0004-5925-5451
+  affiliation: University of Pennsylvania
+repository-code: https://github.com/pennsieve-apps/eeg-report
+license: Apache-2.0
+keywords:
+- eeg
+- scalp-eeg
+- electrophysiology
+- epilepsy
+- neurology
+- neuroscience
+- report
+- seizure-detection
+- biomarkers
+references:
+- type: data
+  title: Siena Scalp EEG Database
+  authors:
+  - family-names: Detti
+    given-names: Paolo
+  year: 2020
+  publisher:
+    name: PhysioNet
+  doi: 10.13026/5d4a-j060
+- type: article
+  title: 'EEG Synchronization Analysis for Seizure Prediction: A Study on Data of Noninvasive Recordings'
+  authors:
+  - family-names: Detti
+    given-names: Paolo
+  - family-names: Vatti
+    given-names: Giampaolo
+  - family-names: Zabalo Manrique de Lara
+    given-names: Garazi
+  year: 2020
+  journal: Processes
+  volume: '8'
+  issue: '7'
+  start: '846'
+  doi: 10.3390/pr8070846
+- type: data
+  title: BIDS Siena Scalp EEG Database
+  authors:
+  - family-names: Dan
+    given-names: Jonathan
+  - family-names: Detti
+    given-names: Paolo
+  year: 2024
+  publisher:
+    name: EPFL
+  doi: 10.5281/zenodo.10640762
+- type: data
+  title: CHB-MIT Scalp EEG Database
+  authors:
+  - family-names: Shoeb
+    given-names: Ali
+  year: 2010
+  publisher:
+    name: physionet.org
+  doi: 10.13026/C2K01R
+- type: article
+  title: PhysioBank, PhysioToolkit, and PhysioNet
+  authors:
+  - family-names: Goldberger
+    given-names: Ary L.
+  - family-names: Amaral
+    given-names: Luis A. N.
+  - family-names: Glass
+    given-names: Leon
+  - family-names: Hausdorff
+    given-names: Jeffrey M.
+  - family-names: Ivanov
+    given-names: Plamen Ch.
+  - family-names: Mark
+    given-names: Roger G.
+  - family-names: Mietus
+    given-names: Joseph E.
+  - family-names: Moody
+    given-names: George B.
+  - family-names: Peng
+    given-names: Chung-Kang
+  - family-names: Stanley
+    given-names: H. Eugene
+  year: 2000
+  journal: Circulation
+  volume: '101'
+  issue: '23'
+  start: e215
+  end: e220
+  doi: 10.1161/01.CIR.101.23.e215
+  identifiers:
+  - type: other
+    value: '10851218'
+    description: PMID
+- type: data
+  title: Dataset of EEG recordings of pediatric patients with epilepsy based on the 10-20 system
+  authors:
+  - name: Dorottya Cserpan
+  - name: Ece Boran
+  - name: Richard Rosch
+  - name: San Pietro Lo Biundo
+  - name: Georgia Ramantani
+  - name: Johannes Sarnthein
+  year: 2021
+  publisher:
+    name: OpenNeuro
+  doi: 10.18112/openneuro.ds003555.v1.0.1
+- type: article
+  title: Scalp high-frequency oscillation rates are higher in younger children
+  authors:
+  - family-names: Cserpan
+    given-names: Dorottya
+  - family-names: Boran
+    given-names: Ece
+  - family-names: Lo Biundo
+    given-names: Santo Pietro
+  - family-names: Rosch
+    given-names: Richard
+  - family-names: Sarnthein
+    given-names: Johannes
+  - family-names: Ramantani
+    given-names: Georgia
+  year: 2021
+  journal: Brain Communications
+  volume: '3'
+  issue: '2'
+  start: fcab052
+  doi: 10.1093/braincomms/fcab052
+  identifiers:
+  - type: other
+    value: '33870193'
+    description: PMID
+- type: software
+  title: WeasyPrint
+  authors:
+  - family-names: Sapin
+    given-names: Simon
+  - name: CourtBouillon
+  repository-code: https://github.com/Kozea/WeasyPrint
+  license: BSD-3-Clause
+- type: software
+  title: Jinja
+  authors:
+  - name: Pallets
+  repository-code: https://github.com/pallets/jinja
+  license: BSD-3-Clause
+- type: software
+  title: Pillow
+  authors:
+  - family-names: Clark
+    given-names: Jeffrey 'Alex'
+  - name: Pillow contributors
+  repository-code: https://github.com/python-pillow/Pillow
+  license: MIT-CMU

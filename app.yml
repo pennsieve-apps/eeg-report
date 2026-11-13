@@ -1,0 +1,126 @@
+# yaml-language-server: $schema=https://schemas.pennsieve.io/app-manifest/v1.json
+schemaVersion: "1.0"
+application:
+  name: Scalp EEG Report
+  description: >-
+    The last step of both scalp EEG workflows (Scalp EEG Interictal Biomarkers; Scalp EEG Seizure
+    Detection & Monitoring). Link eeg-prep's outputs and any of the analysis steps (eeg-seizures,
+    eeg-spikes, eeg-spectral, eeg-sleep, eeg-connectivity) and get one report an epileptologist can
+    read and share, as an offline HTML page and a PDF: the recordings, a per-recording overview,
+    data quality (bad channels, removed ICA components, bad segments), then one section per step
+    with its method caveat, headline numbers per recording (seizure candidates with sensitivity,
+    precision, F1 and false detections per day side by side; spike rates and the side with more
+    detected events; posterior dominant rhythm, aperiodic exponent and brain symmetry index;
+    hypnogram statistics; connectivity asymmetry), every figure with the step's caption, warnings,
+    licence notices, methods, software versions and references. A tables output gathers every
+    step's tables plus overview tables. Copies the steps' numbers and captions; does not recompute
+    or interpret them. Research output, not a clinical interpretation.
+  type: processor
+  tags:
+    - eeg
+    - scalp-eeg
+    - electrophysiology
+    - epilepsy
+    - neurology
+    - neuroscience
+    - report
+    - seizure-detection
+    - spike-detection
+    - biomarkers
+    - quality-control
+runtime:
+  # Measured (linux/amd64 under emulation on an M-series Mac, read-only root, uid 65534,
+  # --memory 2g): Siena demo, 41 recordings and 5 steps, 173 figures, HTML + 22 MB PDF in 16 s,
+  # 220 MB peak RSS (cgroup memory.peak 470 MB including page cache). Lambda-eligible as sized;
+  # 2048 MiB is the smallest Fargate size for 1 vCPU. See README "Runtime".
+  cpu: 1024
+  memory: 2048
+  computeTypes:
+    - standard
+  timeoutSeconds: 900
+parameters:
+  - name: REPORT_TITLE
+    type: string
+    label: Report title
+    description: Title of the report. Empty gives "Scalp EEG report".
+    defaultValue: ""
+  - name: MAX_FIGURES
+    type: integer
+    label: Figures per step
+    description: >-
+      Figures shown per step in the HTML page and the PDF, in the order the step listed them. The
+      others are copied next to the page and linked from it. 0 shows none.
+    defaultValue: 40
+    min: 0
+  - name: DATASET_DOIS
+    type: string
+    label: Dataset DOIs
+    description: >-
+      DOIs of the datasets analysed (comma-separated), credited and cited. Datasets named in
+      eeg-prep's dataset_description.json (SourceDatasets) are found without this.
+    defaultValue: ""
+  - name: WRITE_PDF
+    type: boolean
+    label: Write the PDF
+    description: Also write report.pdf (the same content as the HTML page).
+    defaultValue: true
+inputs:
+  - name: eeg
+    description: >-
+      eeg-prep's eeg output (the BIDS-EEG derivative): recordings.csv, dataset_description.json and
+      provenance.json are read for the recordings table, data quality and dataset credits; the EDF
+      files are not read.
+    mediaTypes: [text/csv, text/tab-separated-values, application/json, application/edf]
+    placement: subfolder
+    required: true
+  - name: qc
+    description: eeg-prep's qc output (eeg-prep/qc.csv, figures, summary.json, provenance.json).
+    mediaTypes: [text/csv, image/png, application/json]
+    placement: subfolder
+    required: false
+  - name: seizures
+    description: eeg-seizures output (eeg-seizures/summary.json with scores, seizures.csv, scores.csv, szcore/, figures).
+    mediaTypes: [text/csv, text/tab-separated-values, image/png, application/json]
+    placement: subfolder
+    required: false
+  - name: spikes
+    description: eeg-spikes output (eeg-spikes/summary.json, spike_rates.csv, lateralisation.csv, figures).
+    mediaTypes: [text/csv, image/png, application/json]
+    placement: subfolder
+    required: false
+  - name: spectral
+    description: eeg-spectral output (eeg-spectral/summary.json, pdr.csv, asymmetry.csv, aperiodic.csv, figures).
+    mediaTypes: [text/csv, image/png, application/json]
+    placement: subfolder
+    required: false
+  - name: sleep
+    description: eeg-sleep output (eeg-sleep/summary.json, hypnogram.csv, sleep_stats.csv, figures).
+    mediaTypes: [text/csv, image/png, application/json]
+    placement: subfolder
+    required: false
+  - name: connectivity
+    description: eeg-connectivity output (eeg-connectivity/summary.json, hemisphere.csv, graph.csv, figures).
+    mediaTypes: [text/csv, image/png, application/json]
+    placement: subfolder
+    required: false
+# Two outputs: each is written to its own folder, OUTPUT_DIR/<name>/, under eeg-report/.
+outputs:
+  - name: report
+    description: >-
+      eeg-report/: index.html (inline CSS, no scripts, figures in figures/<step>/ next to it; opens
+      offline), report.pdf, summary.json, provenance.json.
+    mediaTypes: [text/html, application/pdf, image/png, application/json]
+  - name: tables
+    description: >-
+      eeg-report/: recordings.csv, overview.csv (one row per recording across steps),
+      headline.csv (recording_id, step, metric, value), qc_summary.csv, seizure_scores.csv, and a
+      copy of every table each step wrote under <step>/; provenance.json.
+    mediaTypes: [text/csv, text/tab-separated-values, application/json]
+
+# How a release is tested before it is made public: the inputs a review run uses.
+# See app-deploy-service docs/app-manifest-review.md.
+review:
+  version: 1
+  generate:
+    command: python -m tests.make_fixture "$REVIEW_INPUT_DIR" --layout linked
+    root: linked

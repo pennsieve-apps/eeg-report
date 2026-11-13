@@ -1,0 +1,20 @@
+# Resolved for python:3.12.16-slim-bookworm (linux/amd64), wheels only, 2026-11-12. Installed with
+# --no-deps: this file lists every package.
+# Direct: jinja2 (HTML), weasyprint (PDF; needs Pango from Debian, see Dockerfile), pillow (figure
+# checks and PDF downscaling).
+Jinja2==3.1.6
+weasyprint==70.0
+pillow==13.0.0
+# Transitive
+MarkupSafe==3.0.4
+pydyf==0.13.0
+cffi==2.1.1
+pycparser==3.12
+tinyhtml5==2.1.0
+tinycss2==1.5.1
+cssselect2==0.10.1
+webencodings==0.6.1
+pyphen==0.18.1
+fonttools==4.68.0
+brotli==1.2.1
+zopfli==0.4.3

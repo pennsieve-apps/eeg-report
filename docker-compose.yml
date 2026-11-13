@@ -1,0 +1,18 @@
+services:
+  processor:
+    image: eeg-report:dev
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - dev.env
+    mem_limit: 2g
+    network_mode: none
+    read_only: true
+    user: "65534:65534"
+    tmpfs:
+      - /tmp:mode=1777
+    volumes:
+      - ${INPUT_HOST:-./data/fixture/linked}:/tmp/s/input:ro
+      - ./data/output:/tmp/s/output

@@ -1,0 +1,2955 @@
+{
+ "_about": "Built by scripts/build_citations.py from the sibling apps' verified CITATION.cff files, and from Crossref/DataCite/PubMed for the other DOIs the steps cite. Do not edit by hand.",
+ "apps": {
+  "eeg-prep": {
+   "title": "eeg-prep",
+   "repository": "https://github.com/pennsieve-apps/eeg-prep",
+   "license": "Apache-2.0"
+  },
+  "eeg-spectral": {
+   "title": "eeg-spectral",
+   "repository": "https://github.com/pennsieve-apps/eeg-spectral",
+   "license": "Apache-2.0"
+  },
+  "eeg-spikes": {
+   "title": "EEG Spikes",
+   "repository": "https://github.com/pennsieve-apps/eeg-spikes",
+   "license": "Apache-2.0"
+  },
+  "eeg-seizures": {
+   "title": "eeg-seizures",
+   "repository": "https://github.com/pennsieve-apps/eeg-seizures",
+   "license": "Apache-2.0"
+  },
+  "eeg-sleep": {
+   "title": "eeg-sleep",
+   "repository": "https://github.com/pennsieve-apps/eeg-sleep",
+   "license": "Apache-2.0"
+  },
+  "eeg-connectivity": {
+   "title": "eeg-connectivity",
+   "repository": "https://github.com/pennsieve-apps/eeg-connectivity",
+   "license": "Apache-2.0"
+  },
+  "eeg-report": {
+   "title": "eeg-report",
+   "repository": "https://github.com/pennsieve-apps/eeg-report",
+   "license": "Apache-2.0"
+  }
+ },
+ "software": {
+  "eeg-prep": [
+   {
+    "title": "PyPREP: A Python implementation of the preprocessing pipeline (PREP) for EEG data.",
+    "url": "https://doi.org/10.5281/zenodo.6363575",
+    "doi": "10.5281/zenodo.6363575"
+   },
+   {
+    "title": "nbara/python-meegkit: v0.1.1",
+    "url": "https://doi.org/10.5281/zenodo.5643659",
+    "doi": "10.5281/zenodo.5643659"
+   },
+   {
+    "title": "edfio",
+    "url": "https://github.com/the-siesta-group/edfio",
+    "doi": ""
+   }
+  ],
+  "eeg-spectral": [
+   {
+    "title": "FOOOF: fitting oscillations & one over f (specparam)",
+    "url": "https://github.com/fooof-tools/fooof",
+    "doi": ""
+   }
+  ],
+  "eeg-spikes": [
+   {
+    "title": "epycom: ElectroPhYsiology COmputational Module",
+    "url": "https://github.com/ICRC-BME/epycom",
+    "doi": ""
+   },
+   {
+    "title": "MNE-Python",
+    "url": "https://github.com/mne-tools/mne-python",
+    "doi": ""
+   }
+  ],
+  "eeg-seizures": [
+   {
+    "title": "timescoring: Library for measuring performance of time series classification",
+    "url": "https://github.com/esl-epfl/timescoring",
+    "doi": ""
+   },
+   {
+    "title": "SzCORE: seizure detection benchmarking platform",
+    "url": "https://github.com/esl-epfl/szcore",
+    "doi": ""
+   },
+   {
+    "title": "ONNX Runtime",
+    "url": "https://github.com/microsoft/onnxruntime",
+    "doi": ""
+   }
+  ],
+  "eeg-sleep": [
+   {
+    "title": "YASA: Yet Another Spindle Algorithm",
+    "url": "https://github.com/raphaelvallat/yasa",
+    "doi": ""
+   },
+   {
+    "title": "yasa_classifier: training of YASA's sleep-staging classifiers",
+    "url": "https://github.com/raphaelvallat/yasa_classifier",
+    "doi": ""
+   },
+   {
+    "title": "LightGBM",
+    "url": "https://github.com/lightgbm-org/LightGBM",
+    "doi": ""
+   },
+   {
+    "title": "AntroPy: entropy and complexity of time-series in Python",
+    "url": "https://github.com/raphaelvallat/antropy",
+    "doi": ""
+   },
+   {
+    "title": "MNE-Python",
+    "url": "https://github.com/mne-tools/mne-python",
+    "doi": ""
+   }
+  ],
+  "eeg-connectivity": [
+   {
+    "title": "MNE-Connectivity",
+    "url": "https://github.com/mne-tools/mne-connectivity",
+    "doi": "10.5281/zenodo.10278399"
+   },
+   {
+    "title": "NetworkX",
+    "url": "https://github.com/networkx/networkx",
+    "doi": ""
+   }
+  ],
+  "eeg-report": [
+   {
+    "title": "WeasyPrint",
+    "url": "https://github.com/Kozea/WeasyPrint",
+    "doi": ""
+   },
+   {
+    "title": "Jinja",
+    "url": "https://github.com/pallets/jinja",
+    "doi": ""
+   },
+   {
+    "title": "Pillow",
+    "url": "https://github.com/python-pillow/Pillow",
+    "doi": ""
+   }
+  ]
+ },
+ "references": {
+  "10.1007/s10548-014-0379-1": {
+   "doi": "10.1007/s10548-014-0379-1",
+   "type": "article",
+   "title": "Detection of Interictal Epileptiform Discharges Using Signal Envelope Distribution Modelling: Application to Epileptic and Non-Epileptic Intracranial Recordings",
+   "authors": [
+    {
+     "family": "Janca",
+     "given": "Radek"
+    },
+    {
+     "family": "Jezdik",
+     "given": "Petr"
+    },
+    {
+     "family": "Cmejla",
+     "given": "Roman"
+    },
+    {
+     "family": "Tomasek",
+     "given": "Martin"
+    },
+    {
+     "family": "Worrell",
+     "given": "Gregory A."
+    },
+    {
+     "family": "Stead",
+     "given": "Matt"
+    },
+    {
+     "family": "Wagenaar",
+     "given": "Joost"
+    },
+    {
+     "family": "Jefferys",
+     "given": "John G. R."
+    },
+    {
+     "family": "Krsek",
+     "given": "Pavel"
+    },
+    {
+     "family": "Komarek",
+     "given": "Vladimir"
+    },
+    {
+     "family": "Jiruska",
+     "given": "Premysl"
+    },
+    {
+     "family": "Marusic",
+     "given": "Petr"
+    }
+   ],
+   "journal": "Brain Topography",
+   "publisher": "",
+   "year": 2015,
+   "volume": "28",
+   "issue": "1",
+   "pages": "172-183",
+   "pmid": "24970691",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-spikes"
+   ]
+  },
+  "10.1016/j.clinph.2004.04.029": {
+   "doi": "10.1016/j.clinph.2004.04.029",
+   "type": "article",
+   "title": "Identifying true brain interaction from EEG data using the imaginary part of coherency",
+   "authors": [
+    {
+     "family": "Nolte",
+     "given": "Guido"
+    },
+    {
+     "family": "Bai",
+     "given": "Ou"
+    },
+    {
+     "family": "Wheaton",
+     "given": "Lewis"
+    },
+    {
+     "family": "Mari",
+     "given": "Zoltan"
+    },
+    {
+     "family": "Vorbach",
+     "given": "Sherry"
+    },
+    {
+     "family": "Hallett",
+     "given": "Mark"
+    }
+   ],
+   "journal": "Clinical Neurophysiology",
+   "publisher": "",
+   "year": 2004,
+   "volume": "115",
+   "issue": "10",
+   "pages": "2292-2307",
+   "pmid": "15351371",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-connectivity"
+   ]
+  },
+  "10.1016/j.clinph.2007.07.019": {
+   "doi": "10.1016/j.clinph.2007.07.019",
+   "type": "article",
+   "title": "The revised brain symmetry index",
+   "authors": [
+    {
+     "family": "van Putten",
+     "given": "Michel J.A.M."
+    }
+   ],
+   "journal": "Clinical Neurophysiology",
+   "publisher": "",
+   "year": 2007,
+   "volume": "118",
+   "issue": "11",
+   "pages": "2362-2367",
+   "pmid": "17888719",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-spectral"
+   ]
+  },
+  "10.1016/j.clinph.2011.09.023": {
+   "doi": "10.1016/j.clinph.2011.09.023",
+   "type": "article",
+   "title": "High inter-reviewer variability of spike detection on intracranial EEG addressed by an automated multi-channel algorithm",
+   "authors": [
+    {
+     "family": "Barkmeier",
+     "given": "Daniel T."
+    },
+    {
+     "family": "Shah",
+     "given": "Aashit K."
+    },
+    {
+     "family": "Flanagan",
+     "given": "Danny"
+    },
+    {
+     "family": "Atkinson",
+     "given": "Marie D."
+    },
+    {
+     "family": "Agarwal",
+     "given": "Rajeev"
+    },
+    {
+     "family": "Fuerst",
+     "given": "Darren R."
+    },
+    {
+     "family": "Jafari-Khouzani",
+     "given": "Kourosh"
+    },
+    {
+     "family": "Loeb",
+     "given": "Jeffrey A."
+    }
+   ],
+   "journal": "Clinical Neurophysiology",
+   "publisher": "",
+   "year": 2012,
+   "volume": "123",
+   "issue": "6",
+   "pages": "1088-1095",
+   "pmid": "22033028",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-spikes"
+   ]
+  },
+  "10.1016/j.cnp.2020.11.001": {
+   "doi": "10.1016/j.cnp.2020.11.001",
+   "type": "article",
+   "title": "Fully automatic peak frequency estimation of the posterior dominant rhythm in a large retrospective hospital EEG cohort",
+   "authors": [
+    {
+     "family": "Zibrandtsen",
+     "given": "Ivan C."
+    },
+    {
+     "family": "Kjaer",
+     "given": "Troels W."
+    }
+   ],
+   "journal": "Clinical Neurophysiology Practice",
+   "publisher": "",
+   "year": 2021,
+   "volume": "6",
+   "issue": "",
+   "pages": "1-9",
+   "pmid": "33385100",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-spectral"
+   ]
+  },
+  "10.1016/j.jneumeth.2011.06.008": {
+   "doi": "10.1016/j.jneumeth.2011.06.008",
+   "type": "article",
+   "title": "Automated EEG analysis: Characterizing the posterior dominant rhythm",
+   "authors": [
+    {
+     "family": "Lodder",
+     "given": "Shaun S."
+    },
+    {
+     "family": "van Putten",
+     "given": "Michel J.A.M."
+    }
+   ],
+   "journal": "Journal of Neuroscience Methods",
+   "publisher": "",
+   "year": 2011,
+   "volume": "200",
+   "issue": "1",
+   "pages": "86-93",
+   "pmid": "21722667",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-spectral"
+   ]
+  },
+  "10.1016/j.neuroimage.2009.10.003": {
+   "doi": "10.1016/j.neuroimage.2009.10.003",
+   "type": "article",
+   "title": "Complex network measures of brain connectivity: Uses and interpretations",
+   "authors": [
+    {
+     "family": "Rubinov",
+     "given": "Mikail"
+    },
+    {
+     "family": "Sporns",
+     "given": "Olaf"
+    }
+   ],
+   "journal": "NeuroImage",
+   "publisher": "",
+   "year": 2010,
+   "volume": "52",
+   "issue": "3",
+   "pages": "1059-1069",
+   "pmid": "19819337",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-connectivity"
+   ]
+  },
+  "10.1016/j.neuroimage.2011.01.055": {
+   "doi": "10.1016/j.neuroimage.2011.01.055",
+   "type": "article",
+   "title": "An improved index of phase-synchronization for electrophysiological data in the presence of volume-conduction, noise and sample-size bias",
+   "authors": [
+    {
+     "family": "Vinck",
+     "given": "Martin"
+    },
+    {
+     "family": "Oostenveld",
+     "given": "Robert"
+    },
+    {
+     "family": "van Wingerden",
+     "given": "Marijn"
+    },
+    {
+     "family": "Battaglia",
+     "given": "Franscesco"
+    },
+    {
+     "family": "Pennartz",
+     "given": "Cyriel M.A."
+    }
+   ],
+   "journal": "NeuroImage",
+   "publisher": "",
+   "year": 2011,
+   "volume": "55",
+   "issue": "4",
+   "pages": "1548-1565",
+   "pmid": "21276857",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-connectivity"
+   ]
+  },
+  "10.1016/j.neuroimage.2019.05.026": {
+   "doi": "10.1016/j.neuroimage.2019.05.026",
+   "type": "article",
+   "title": "ICLabel: An automated electroencephalographic independent component classifier, dataset, and website",
+   "authors": [
+    {
+     "family": "Pion-Tonachini",
+     "given": "Luca"
+    },
+    {
+     "family": "Kreutz-Delgado",
+     "given": "Ken"
+    },
+    {
+     "family": "Makeig",
+     "given": "Scott"
+    }
+   ],
+   "journal": "NeuroImage",
+   "publisher": "",
+   "year": 2019,
+   "volume": "198",
+   "issue": "",
+   "pages": "181-197",
+   "pmid": "31103785",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep"
+   ]
+  },
+  "10.1016/j.nicl.2017.09.021": {
+   "doi": "10.1016/j.nicl.2017.09.021",
+   "type": "article",
+   "title": "Automated diagnosis of temporal lobe epilepsy in the absence of interictal spikes",
+   "authors": [
+    {
+     "family": "Verhoeven",
+     "given": "Thibault"
+    },
+    {
+     "family": "Coito",
+     "given": "Ana"
+    },
+    {
+     "family": "Plomp",
+     "given": "Gijs"
+    },
+    {
+     "family": "Thomschewski",
+     "given": "Aljoscha"
+    },
+    {
+     "family": "Pittau",
+     "given": "Francesca"
+    },
+    {
+     "family": "Trinka",
+     "given": "Eugen"
+    },
+    {
+     "family": "Wiest",
+     "given": "Roland"
+    },
+    {
+     "family": "Schaller",
+     "given": "Karl"
+    },
+    {
+     "family": "Michel",
+     "given": "Christoph"
+    },
+    {
+     "family": "Seeck",
+     "given": "Margitta"
+    },
+    {
+     "family": "Dambre",
+     "given": "Joni"
+    },
+    {
+     "family": "Vulliemoz",
+     "given": "Serge"
+    },
+    {
+     "family": "van Mierlo",
+     "given": "Pieter"
+    }
+   ],
+   "journal": "NeuroImage: Clinical",
+   "publisher": "",
+   "year": 2018,
+   "volume": "17",
+   "issue": "",
+   "pages": "10-15",
+   "pmid": "29527470",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-connectivity"
+   ]
+  },
+  "10.1038/nn.3101": {
+   "doi": "10.1038/nn.3101",
+   "type": "article",
+   "title": "Large-scale cortical correlation structure of spontaneous oscillatory activity",
+   "authors": [
+    {
+     "family": "Hipp",
+     "given": "Joerg F"
+    },
+    {
+     "family": "Hawellek",
+     "given": "David J"
+    },
+    {
+     "family": "Corbetta",
+     "given": "Maurizio"
+    },
+    {
+     "family": "Siegel",
+     "given": "Markus"
+    },
+    {
+     "family": "Engel",
+     "given": "Andreas K"
+    }
+   ],
+   "journal": "Nature Neuroscience",
+   "publisher": "",
+   "year": 2012,
+   "volume": "15",
+   "issue": "6",
+   "pages": "884-890",
+   "pmid": "22561454",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-connectivity"
+   ]
+  },
+  "10.1038/s41586-020-2649-2": {
+   "doi": "10.1038/s41586-020-2649-2",
+   "type": "article",
+   "title": "Array programming with NumPy",
+   "authors": [
+    {
+     "family": "Harris",
+     "given": "Charles R."
+    },
+    {
+     "family": "Millman",
+     "given": "K. Jarrod"
+    },
+    {
+     "family": "van der Walt",
+     "given": "Stéfan J."
+    },
+    {
+     "family": "Gommers",
+     "given": "Ralf"
+    },
+    {
+     "family": "Virtanen",
+     "given": "Pauli"
+    },
+    {
+     "family": "Cournapeau",
+     "given": "David"
+    },
+    {
+     "family": "Wieser",
+     "given": "Eric"
+    },
+    {
+     "family": "Taylor",
+     "given": "Julian"
+    },
+    {
+     "family": "Berg",
+     "given": "Sebastian"
+    },
+    {
+     "family": "Smith",
+     "given": "Nathaniel J."
+    },
+    {
+     "family": "Kern",
+     "given": "Robert"
+    },
+    {
+     "family": "Picus",
+     "given": "Matti"
+    },
+    {
+     "family": "Hoyer",
+     "given": "Stephan"
+    },
+    {
+     "family": "van Kerkwijk",
+     "given": "Marten H."
+    },
+    {
+     "family": "Brett",
+     "given": "Matthew"
+    },
+    {
+     "family": "Haldane",
+     "given": "Allan"
+    },
+    {
+     "family": "del Río",
+     "given": "Jaime Fernández"
+    },
+    {
+     "family": "Wiebe",
+     "given": "Mark"
+    },
+    {
+     "family": "Peterson",
+     "given": "Pearu"
+    },
+    {
+     "family": "Gérard-Marchant",
+     "given": "Pierre"
+    },
+    {
+     "family": "Sheppard",
+     "given": "Kevin"
+    },
+    {
+     "family": "Reddy",
+     "given": "Tyler"
+    },
+    {
+     "family": "Weckesser",
+     "given": "Warren"
+    },
+    {
+     "family": "Abbasi",
+     "given": "Hameer"
+    },
+    {
+     "family": "Gohlke",
+     "given": "Christoph"
+    },
+    {
+     "family": "Oliphant",
+     "given": "Travis E."
+    }
+   ],
+   "journal": "Nature",
+   "publisher": "",
+   "year": 2020,
+   "volume": "585",
+   "issue": "7825",
+   "pages": "357-362",
+   "pmid": "32939066",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-seizures"
+   ]
+  },
+  "10.1038/s41592-019-0686-2": {
+   "doi": "10.1038/s41592-019-0686-2",
+   "type": "article",
+   "title": "SciPy 1.0: fundamental algorithms for scientific computing in Python",
+   "authors": [
+    {
+     "family": "Virtanen",
+     "given": "Pauli"
+    },
+    {
+     "family": "Gommers",
+     "given": "Ralf"
+    },
+    {
+     "family": "Oliphant",
+     "given": "Travis E."
+    },
+    {
+     "family": "Haberland",
+     "given": "Matt"
+    },
+    {
+     "family": "Reddy",
+     "given": "Tyler"
+    },
+    {
+     "family": "Cournapeau",
+     "given": "David"
+    },
+    {
+     "family": "Burovski",
+     "given": "Evgeni"
+    },
+    {
+     "family": "Peterson",
+     "given": "Pearu"
+    },
+    {
+     "family": "Weckesser",
+     "given": "Warren"
+    },
+    {
+     "family": "Bright",
+     "given": "Jonathan"
+    },
+    {
+     "family": "van der Walt",
+     "given": "Stéfan J."
+    },
+    {
+     "family": "Brett",
+     "given": "Matthew"
+    },
+    {
+     "family": "Wilson",
+     "given": "Joshua"
+    },
+    {
+     "family": "Millman",
+     "given": "K. Jarrod"
+    },
+    {
+     "family": "Mayorov",
+     "given": "Nikolay"
+    },
+    {
+     "family": "Nelson",
+     "given": "Andrew R. J."
+    },
+    {
+     "family": "Jones",
+     "given": "Eric"
+    },
+    {
+     "family": "Kern",
+     "given": "Robert"
+    },
+    {
+     "family": "Larson",
+     "given": "Eric"
+    },
+    {
+     "family": "Carey",
+     "given": "C J"
+    },
+    {
+     "family": "Polat",
+     "given": "İlhan"
+    },
+    {
+     "family": "Feng",
+     "given": "Yu"
+    },
+    {
+     "family": "Moore",
+     "given": "Eric W."
+    },
+    {
+     "family": "VanderPlas",
+     "given": "Jake"
+    },
+    {
+     "family": "Laxalde",
+     "given": "Denis"
+    },
+    {
+     "family": "Perktold",
+     "given": "Josef"
+    },
+    {
+     "family": "Cimrman",
+     "given": "Robert"
+    },
+    {
+     "family": "Henriksen",
+     "given": "Ian"
+    },
+    {
+     "family": "Quintero",
+     "given": "E. A."
+    },
+    {
+     "family": "Harris",
+     "given": "Charles R."
+    },
+    {
+     "family": "Archibald",
+     "given": "Anne M."
+    },
+    {
+     "family": "Ribeiro",
+     "given": "Antônio H."
+    },
+    {
+     "family": "Pedregosa",
+     "given": "Fabian"
+    },
+    {
+     "family": "van Mulbregt",
+     "given": "Paul"
+    },
+    {
+     "name": "SciPy 1.0 Contributors"
+    },
+    {
+     "family": "Vijaykumar",
+     "given": "Aditya"
+    },
+    {
+     "family": "Bardelli",
+     "given": "Alessandro Pietro"
+    },
+    {
+     "family": "Rothberg",
+     "given": "Alex"
+    },
+    {
+     "family": "Hilboll",
+     "given": "Andreas"
+    },
+    {
+     "family": "Kloeckner",
+     "given": "Andreas"
+    },
+    {
+     "family": "Scopatz",
+     "given": "Anthony"
+    },
+    {
+     "family": "Lee",
+     "given": "Antony"
+    },
+    {
+     "family": "Rokem",
+     "given": "Ariel"
+    },
+    {
+     "family": "Woods",
+     "given": "C. Nathan"
+    },
+    {
+     "family": "Fulton",
+     "given": "Chad"
+    },
+    {
+     "family": "Masson",
+     "given": "Charles"
+    },
+    {
+     "family": "Häggström",
+     "given": "Christian"
+    },
+    {
+     "family": "Fitzgerald",
+     "given": "Clark"
+    },
+    {
+     "family": "Nicholson",
+     "given": "David A."
+    },
+    {
+     "family": "Hagen",
+     "given": "David R."
+    },
+    {
+     "family": "Pasechnik",
+     "given": "Dmitrii V."
+    },
+    {
+     "family": "Olivetti",
+     "given": "Emanuele"
+    },
+    {
+     "family": "Martin",
+     "given": "Eric"
+    },
+    {
+     "family": "Wieser",
+     "given": "Eric"
+    },
+    {
+     "family": "Silva",
+     "given": "Fabrice"
+    },
+    {
+     "family": "Lenders",
+     "given": "Felix"
+    },
+    {
+     "family": "Wilhelm",
+     "given": "Florian"
+    },
+    {
+     "family": "Young",
+     "given": "G."
+    },
+    {
+     "family": "Price",
+     "given": "Gavin A."
+    },
+    {
+     "family": "Ingold",
+     "given": "Gert-Ludwig"
+    },
+    {
+     "family": "Allen",
+     "given": "Gregory E."
+    },
+    {
+     "family": "Lee",
+     "given": "Gregory R."
+    },
+    {
+     "family": "Audren",
+     "given": "Hervé"
+    },
+    {
+     "family": "Probst",
+     "given": "Irvin"
+    },
+    {
+     "family": "Dietrich",
+     "given": "Jörg P."
+    },
+    {
+     "family": "Silterra",
+     "given": "Jacob"
+    },
+    {
+     "family": "Webber",
+     "given": "James T"
+    },
+    {
+     "family": "Slavič",
+     "given": "Janko"
+    },
+    {
+     "family": "Nothman",
+     "given": "Joel"
+    },
+    {
+     "family": "Buchner",
+     "given": "Johannes"
+    },
+    {
+     "family": "Kulick",
+     "given": "Johannes"
+    },
+    {
+     "family": "Schönberger",
+     "given": "Johannes L."
+    },
+    {
+     "family": "de Miranda Cardoso",
+     "given": "José Vinícius"
+    },
+    {
+     "family": "Reimer",
+     "given": "Joscha"
+    },
+    {
+     "family": "Harrington",
+     "given": "Joseph"
+    },
+    {
+     "family": "Rodríguez",
+     "given": "Juan Luis Cano"
+    },
+    {
+     "family": "Nunez-Iglesias",
+     "given": "Juan"
+    },
+    {
+     "family": "Kuczynski",
+     "given": "Justin"
+    },
+    {
+     "family": "Tritz",
+     "given": "Kevin"
+    },
+    {
+     "family": "Thoma",
+     "given": "Martin"
+    },
+    {
+     "family": "Newville",
+     "given": "Matthew"
+    },
+    {
+     "family": "Kümmerer",
+     "given": "Matthias"
+    },
+    {
+     "family": "Bolingbroke",
+     "given": "Maximilian"
+    },
+    {
+     "family": "Tartre",
+     "given": "Michael"
+    },
+    {
+     "family": "Pak",
+     "given": "Mikhail"
+    },
+    {
+     "family": "Smith",
+     "given": "Nathaniel J."
+    },
+    {
+     "family": "Nowaczyk",
+     "given": "Nikolai"
+    },
+    {
+     "family": "Shebanov",
+     "given": "Nikolay"
+    },
+    {
+     "family": "Pavlyk",
+     "given": "Oleksandr"
+    },
+    {
+     "family": "Brodtkorb",
+     "given": "Per A."
+    },
+    {
+     "family": "Lee",
+     "given": "Perry"
+    },
+    {
+     "family": "McGibbon",
+     "given": "Robert T."
+    },
+    {
+     "family": "Feldbauer",
+     "given": "Roman"
+    },
+    {
+     "family": "Lewis",
+     "given": "Sam"
+    },
+    {
+     "family": "Tygier",
+     "given": "Sam"
+    },
+    {
+     "family": "Sievert",
+     "given": "Scott"
+    },
+    {
+     "family": "Vigna",
+     "given": "Sebastiano"
+    },
+    {
+     "family": "Peterson",
+     "given": "Stefan"
+    },
+    {
+     "family": "More",
+     "given": "Surhud"
+    },
+    {
+     "family": "Pudlik",
+     "given": "Tadeusz"
+    },
+    {
+     "family": "Oshima",
+     "given": "Takuya"
+    },
+    {
+     "family": "Pingel",
+     "given": "Thomas J."
+    },
+    {
+     "family": "Robitaille",
+     "given": "Thomas P."
+    },
+    {
+     "family": "Spura",
+     "given": "Thomas"
+    },
+    {
+     "family": "Jones",
+     "given": "Thouis R."
+    },
+    {
+     "family": "Cera",
+     "given": "Tim"
+    },
+    {
+     "family": "Leslie",
+     "given": "Tim"
+    },
+    {
+     "family": "Zito",
+     "given": "Tiziano"
+    },
+    {
+     "family": "Krauss",
+     "given": "Tom"
+    },
+    {
+     "family": "Upadhyay",
+     "given": "Utkarsh"
+    },
+    {
+     "family": "Halchenko",
+     "given": "Yaroslav O."
+    },
+    {
+     "family": "Vázquez-Baeza",
+     "given": "Yoshiki"
+    }
+   ],
+   "journal": "Nature Methods",
+   "publisher": "",
+   "year": 2020,
+   "volume": "17",
+   "issue": "3",
+   "pages": "261-272",
+   "pmid": "32015543",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-seizures",
+    "eeg-sleep"
+   ]
+  },
+  "10.1038/s41593-020-00744-x": {
+   "doi": "10.1038/s41593-020-00744-x",
+   "type": "article",
+   "title": "Parameterizing neural power spectra into periodic and aperiodic components",
+   "authors": [
+    {
+     "family": "Donoghue",
+     "given": "Thomas"
+    },
+    {
+     "family": "Haller",
+     "given": "Matar"
+    },
+    {
+     "family": "Peterson",
+     "given": "Erik J."
+    },
+    {
+     "family": "Varma",
+     "given": "Paroma"
+    },
+    {
+     "family": "Sebastian",
+     "given": "Priyadarshini"
+    },
+    {
+     "family": "Gao",
+     "given": "Richard"
+    },
+    {
+     "family": "Noto",
+     "given": "Torben"
+    },
+    {
+     "family": "Lara",
+     "given": "Antonio H."
+    },
+    {
+     "family": "Wallis",
+     "given": "Joni D."
+    },
+    {
+     "family": "Knight",
+     "given": "Robert T."
+    },
+    {
+     "family": "Shestyuk",
+     "given": "Avgusta"
+    },
+    {
+     "family": "Voytek",
+     "given": "Bradley"
+    }
+   ],
+   "journal": "Nature Neuroscience",
+   "publisher": "",
+   "year": 2020,
+   "volume": "23",
+   "issue": "12",
+   "pages": "1655-1665",
+   "pmid": "33230329",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-spectral"
+   ]
+  },
+  "10.1038/s41597-019-0104-8": {
+   "doi": "10.1038/s41597-019-0104-8",
+   "type": "article",
+   "title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
+   "authors": [
+    {
+     "family": "Pernet",
+     "given": "Cyril R."
+    },
+    {
+     "family": "Appelhoff",
+     "given": "Stefan"
+    },
+    {
+     "family": "Gorgolewski",
+     "given": "Krzysztof J."
+    },
+    {
+     "family": "Flandin",
+     "given": "Guillaume"
+    },
+    {
+     "family": "Phillips",
+     "given": "Christophe"
+    },
+    {
+     "family": "Delorme",
+     "given": "Arnaud"
+    },
+    {
+     "family": "Oostenveld",
+     "given": "Robert"
+    }
+   ],
+   "journal": "Scientific Data",
+   "publisher": "",
+   "year": 2019,
+   "volume": "6",
+   "issue": "1",
+   "pages": "103",
+   "pmid": "31239435",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep"
+   ]
+  },
+  "10.1038/s41597-025-04572-1": {
+   "doi": "10.1038/s41597-025-04572-1",
+   "type": "article",
+   "title": "An EEG dataset for interictal epileptiform discharge with spatial distribution information",
+   "authors": [
+    {
+     "family": "Lin",
+     "given": "Nan"
+    },
+    {
+     "family": "Zheng",
+     "given": "Mengxuan"
+    },
+    {
+     "family": "Li",
+     "given": "Lian"
+    },
+    {
+     "family": "Hu",
+     "given": "Peng"
+    },
+    {
+     "family": "Gao",
+     "given": "Weifang"
+    },
+    {
+     "family": "Sun",
+     "given": "Heyang"
+    },
+    {
+     "family": "Xu",
+     "given": "Chang"
+    },
+    {
+     "family": "Yuan",
+     "given": "Gonglin"
+    },
+    {
+     "family": "Liang",
+     "given": "Zi"
+    },
+    {
+     "family": "Dong",
+     "given": "Yisu"
+    },
+    {
+     "family": "He",
+     "given": "Haibo"
+    },
+    {
+     "family": "Cui",
+     "given": "Liying"
+    },
+    {
+     "family": "Lu",
+     "given": "Qiang"
+    }
+   ],
+   "journal": "Scientific Data",
+   "publisher": "",
+   "year": 2025,
+   "volume": "12",
+   "issue": "1",
+   "pages": "229",
+   "pmid": "39920162",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-spikes"
+   ]
+  },
+  "10.1088/1742-5468/2008/10/p10008": {
+   "doi": "10.1088/1742-5468/2008/10/P10008",
+   "type": "article",
+   "title": "Fast unfolding of communities in large networks",
+   "authors": [
+    {
+     "family": "Blondel",
+     "given": "Vincent D"
+    },
+    {
+     "family": "Guillaume",
+     "given": "Jean-Loup"
+    },
+    {
+     "family": "Lambiotte",
+     "given": "Renaud"
+    },
+    {
+     "family": "Lefebvre",
+     "given": "Etienne"
+    }
+   ],
+   "journal": "Journal of Statistical Mechanics: Theory and Experiment",
+   "publisher": "",
+   "year": 2008,
+   "volume": "2008",
+   "issue": "10",
+   "pages": "P10008",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-connectivity"
+   ]
+  },
+  "10.1093/braincomms/fcab052": {
+   "doi": "10.1093/braincomms/fcab052",
+   "type": "article",
+   "title": "Scalp high-frequency oscillation rates are higher in younger children",
+   "authors": [
+    {
+     "family": "Cserpan",
+     "given": "Dorottya"
+    },
+    {
+     "family": "Boran",
+     "given": "Ece"
+    },
+    {
+     "family": "Lo Biundo",
+     "given": "Santo Pietro"
+    },
+    {
+     "family": "Rosch",
+     "given": "Richard"
+    },
+    {
+     "family": "Sarnthein",
+     "given": "Johannes"
+    },
+    {
+     "family": "Ramantani",
+     "given": "Georgia"
+    }
+   ],
+   "journal": "Brain Communications",
+   "publisher": "",
+   "year": 2021,
+   "volume": "3",
+   "issue": "2",
+   "pages": "fcab052",
+   "pmid": "33870193",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep",
+    "eeg-spectral",
+    "eeg-sleep",
+    "eeg-connectivity",
+    "eeg-report"
+   ]
+  },
+  "10.1093/jamia/ocy064": {
+   "doi": "10.1093/jamia/ocy064",
+   "type": "article",
+   "title": "The National Sleep Research Resource: towards a sleep data commons",
+   "authors": [
+    {
+     "family": "Zhang",
+     "given": "Guo-Qiang"
+    },
+    {
+     "family": "Cui",
+     "given": "Licong"
+    },
+    {
+     "family": "Mueller",
+     "given": "Remo"
+    },
+    {
+     "family": "Tao",
+     "given": "Shiqiang"
+    },
+    {
+     "family": "Kim",
+     "given": "Matthew"
+    },
+    {
+     "family": "Rueschman",
+     "given": "Michael"
+    },
+    {
+     "family": "Mariani",
+     "given": "Sara"
+    },
+    {
+     "family": "Mobley",
+     "given": "Daniel"
+    },
+    {
+     "family": "Redline",
+     "given": "Susan"
+    }
+   ],
+   "journal": "Journal of the American Medical Informatics Association",
+   "publisher": "",
+   "year": 2018,
+   "volume": "25",
+   "issue": "10",
+   "pages": "1351-1358",
+   "pmid": "29860441",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-sleep"
+   ]
+  },
+  "10.1103/physreve.71.065103": {
+   "doi": "10.1103/PhysRevE.71.065103",
+   "type": "article",
+   "title": "Intensity and coherence of motifs in weighted complex networks",
+   "authors": [
+    {
+     "family": "Onnela",
+     "given": "Jukka-Pekka"
+    },
+    {
+     "family": "Saramäki",
+     "given": "Jari"
+    },
+    {
+     "family": "Kertész",
+     "given": "János"
+    },
+    {
+     "family": "Kaski",
+     "given": "Kimmo"
+    }
+   ],
+   "journal": "Physical Review E",
+   "publisher": "",
+   "year": 2005,
+   "volume": "71",
+   "issue": "6",
+   "pages": "065103",
+   "pmid": "16089800",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-connectivity"
+   ]
+  },
+  "10.1109/iembs.2001.1020545": {
+   "doi": "10.1109/IEMBS.2001.1020545",
+   "type": "conference-paper",
+   "title": "Line length: an efficient feature for seizure onset detection",
+   "authors": [
+    {
+     "family": "Esteller",
+     "given": "R."
+    },
+    {
+     "family": "Echauz",
+     "given": "J."
+    },
+    {
+     "family": "Tcheng",
+     "given": "T."
+    },
+    {
+     "family": "Litt",
+     "given": "B."
+    },
+    {
+     "family": "Pless",
+     "given": "B."
+    }
+   ],
+   "journal": "2001 Conference Proceedings of the 23rd Annual International Conference of the IEEE Engineering in Medicine and Biology Society",
+   "publisher": "",
+   "year": 2001,
+   "volume": "",
+   "issue": "",
+   "pages": "1707-1710",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-seizures"
+   ]
+  },
+  "10.1109/mcse.2007.55": {
+   "doi": "10.1109/MCSE.2007.55",
+   "type": "article",
+   "title": "Matplotlib: A 2D Graphics Environment",
+   "authors": [
+    {
+     "family": "Hunter",
+     "given": "John D."
+    }
+   ],
+   "journal": "Computing in Science & Engineering",
+   "publisher": "",
+   "year": 2007,
+   "volume": "9",
+   "issue": "3",
+   "pages": "90-95",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-seizures"
+   ]
+  },
+  "10.1109/tbme.2015.2481482": {
+   "doi": "10.1109/TBME.2015.2481482",
+   "type": "article",
+   "title": "Real-time neuroimaging and cognitive monitoring using wearable dry EEG",
+   "authors": [
+    {
+     "family": "Mullen",
+     "given": "Tim R."
+    },
+    {
+     "family": "Kothe",
+     "given": "Christian A. E."
+    },
+    {
+     "family": "Chi",
+     "given": "Yu Mike"
+    },
+    {
+     "family": "Ojeda",
+     "given": "Alejandro"
+    },
+    {
+     "family": "Kerth",
+     "given": "Trevor"
+    },
+    {
+     "family": "Makeig",
+     "given": "Scott"
+    },
+    {
+     "family": "Jung",
+     "given": "Tzyy-Ping"
+    },
+    {
+     "family": "Cauwenberghs",
+     "given": "Gert"
+    }
+   ],
+   "journal": "IEEE Transactions on Biomedical Engineering",
+   "publisher": "",
+   "year": 2015,
+   "volume": "62",
+   "issue": "11",
+   "pages": "2553-2567",
+   "pmid": "26415149",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep"
+   ]
+  },
+  "10.1109/tbme.2019.2930186": {
+   "doi": "10.1109/TBME.2019.2930186",
+   "type": "article",
+   "title": "Evaluation of Artifact Subspace Reconstruction for Automatic Artifact Components Removal in Multi-Channel EEG Recordings",
+   "authors": [
+    {
+     "family": "Chang",
+     "given": "Chi-Yuan"
+    },
+    {
+     "family": "Hsu",
+     "given": "Sheng-Hsiou"
+    },
+    {
+     "family": "Pion-Tonachini",
+     "given": "Luca"
+    },
+    {
+     "family": "Jung",
+     "given": "Tzyy-Ping"
+    }
+   ],
+   "journal": "IEEE Transactions on Biomedical Engineering",
+   "publisher": "",
+   "year": 2020,
+   "volume": "67",
+   "issue": "4",
+   "pages": "1114-1121",
+   "pmid": "31329105",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep"
+   ]
+  },
+  "10.1109/tsp.2018.2844203": {
+   "doi": "10.1109/TSP.2018.2844203",
+   "type": "article",
+   "title": "Faster Independent Component Analysis by Preconditioning With Hessian Approximations",
+   "authors": [
+    {
+     "family": "Ablin",
+     "given": "Pierre"
+    },
+    {
+     "family": "Cardoso",
+     "given": "Jean-Francois"
+    },
+    {
+     "family": "Gramfort",
+     "given": "Alexandre"
+    }
+   ],
+   "journal": "IEEE Transactions on Signal Processing",
+   "publisher": "",
+   "year": 2018,
+   "volume": "66",
+   "issue": "15",
+   "pages": "4040-4049",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep"
+   ]
+  },
+  "10.1111/epi.17482": {
+   "doi": "10.1111/epi.17482",
+   "type": "article",
+   "title": "Spike patterns surrounding sleep and seizures localize the seizure‐onset zone in focal epilepsy",
+   "authors": [
+    {
+     "family": "Conrad",
+     "given": "Erin C."
+    },
+    {
+     "family": "Revell",
+     "given": "Andrew Y."
+    },
+    {
+     "family": "Greenblatt",
+     "given": "Adam S."
+    },
+    {
+     "family": "Gallagher",
+     "given": "Ryan S."
+    },
+    {
+     "family": "Pattnaik",
+     "given": "Akash R."
+    },
+    {
+     "family": "Hartmann",
+     "given": "Nicole"
+    },
+    {
+     "family": "Gugger",
+     "given": "James J."
+    },
+    {
+     "family": "Shinohara",
+     "given": "Russell T."
+    },
+    {
+     "family": "Litt",
+     "given": "Brian"
+    },
+    {
+     "family": "Marsh",
+     "given": "Eric D."
+    },
+    {
+     "family": "Davis",
+     "given": "Kathryn A."
+    }
+   ],
+   "journal": "Epilepsia",
+   "publisher": "",
+   "year": 2023,
+   "volume": "64",
+   "issue": "3",
+   "pages": "754-768",
+   "pmid": "36484572",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-spikes"
+   ]
+  },
+  "10.1111/epi.18113": {
+   "doi": "10.1111/epi.18113",
+   "type": "article",
+   "title": "SzCORE : Seizure Community Open‐Source Research Evaluation framework for the validation of electroencephalography ‐based automated seizure detection algorithms",
+   "authors": [
+    {
+     "family": "Dan",
+     "given": "Jonathan"
+    },
+    {
+     "family": "Pale",
+     "given": "Una"
+    },
+    {
+     "family": "Amirshahi",
+     "given": "Alireza"
+    },
+    {
+     "family": "Cappelletti",
+     "given": "William"
+    },
+    {
+     "family": "Ingolfsson",
+     "given": "Thorir Mar"
+    },
+    {
+     "family": "Wang",
+     "given": "Xiaying"
+    },
+    {
+     "family": "Cossettini",
+     "given": "Andrea"
+    },
+    {
+     "family": "Bernini",
+     "given": "Adriano"
+    },
+    {
+     "family": "Benini",
+     "given": "Luca"
+    },
+    {
+     "family": "Beniczky",
+     "given": "Sándor"
+    },
+    {
+     "family": "Atienza",
+     "given": "David"
+    },
+    {
+     "family": "Ryvlin",
+     "given": "Philippe"
+    }
+   ],
+   "journal": "Epilepsia",
+   "publisher": "",
+   "year": 2024,
+   "volume": "66",
+   "issue": "S3",
+   "pages": "14-24",
+   "pmid": "39292446",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep",
+    "eeg-seizures"
+   ]
+  },
+  "10.1111/j.1528-1157.1998.tb01329.x": {
+   "doi": "10.1111/j.1528-1157.1998.tb01329.x",
+   "type": "article",
+   "title": "Interictal Spiking Increases with Sleep Depth in Temporal Lobe Epilepsy",
+   "authors": [
+    {
+     "family": "Malow",
+     "given": "Beth A."
+    },
+    {
+     "family": "Lin",
+     "given": "Xihong"
+    },
+    {
+     "family": "Kushwaha",
+     "given": "Ramesh"
+    },
+    {
+     "family": "Aldrich",
+     "given": "Michael S."
+    }
+   ],
+   "journal": "Epilepsia",
+   "publisher": "",
+   "year": 1998,
+   "volume": "39",
+   "issue": "12",
+   "pages": "1309-1316",
+   "pmid": "9860066",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-spikes"
+   ]
+  },
+  "10.1126/science.1065103": {
+   "doi": "10.1126/science.1065103",
+   "type": "article",
+   "title": "Specificity and Stability in Topology of Protein Networks",
+   "authors": [
+    {
+     "family": "Maslov",
+     "given": "Sergei"
+    },
+    {
+     "family": "Sneppen",
+     "given": "Kim"
+    }
+   ],
+   "journal": "Science",
+   "publisher": "",
+   "year": 2002,
+   "volume": "296",
+   "issue": "5569",
+   "pages": "910-913",
+   "pmid": "11988575",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-connectivity"
+   ]
+  },
+  "10.1161/01.cir.101.23.e215": {
+   "doi": "10.1161/01.CIR.101.23.e215",
+   "type": "article",
+   "title": "PhysioBank, PhysioToolkit, and PhysioNet",
+   "authors": [
+    {
+     "family": "Goldberger",
+     "given": "Ary L."
+    },
+    {
+     "family": "Amaral",
+     "given": "Luis A. N."
+    },
+    {
+     "family": "Glass",
+     "given": "Leon"
+    },
+    {
+     "family": "Hausdorff",
+     "given": "Jeffrey M."
+    },
+    {
+     "family": "Ivanov",
+     "given": "Plamen Ch."
+    },
+    {
+     "family": "Mark",
+     "given": "Roger G."
+    },
+    {
+     "family": "Mietus",
+     "given": "Joseph E."
+    },
+    {
+     "family": "Moody",
+     "given": "George B."
+    },
+    {
+     "family": "Peng",
+     "given": "Chung-Kang"
+    },
+    {
+     "family": "Stanley",
+     "given": "H. Eugene"
+    }
+   ],
+   "journal": "Circulation",
+   "publisher": "",
+   "year": 2000,
+   "volume": "101",
+   "issue": "23",
+   "pages": "e215-e220",
+   "pmid": "10851218",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep",
+    "eeg-spectral",
+    "eeg-spikes",
+    "eeg-seizures",
+    "eeg-sleep",
+    "eeg-connectivity",
+    "eeg-report"
+   ]
+  },
+  "10.1162/089976699300016719": {
+   "doi": "10.1162/089976699300016719",
+   "type": "article",
+   "title": "Independent Component Analysis Using an Extended Infomax Algorithm for Mixed Subgaussian and Supergaussian Sources",
+   "authors": [
+    {
+     "family": "Lee",
+     "given": "Te-Won"
+    },
+    {
+     "family": "Girolami",
+     "given": "Mark"
+    },
+    {
+     "family": "Sejnowski",
+     "given": "Terrence J."
+    }
+   ],
+   "journal": "Neural Computation",
+   "publisher": "",
+   "year": 1999,
+   "volume": "11",
+   "issue": "2",
+   "pages": "417-441",
+   "pmid": "9950738",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep"
+   ]
+  },
+  "10.13026/5d4a-j060": {
+   "doi": "10.13026/5d4a-j060",
+   "type": "data",
+   "title": "Siena Scalp EEG Database",
+   "authors": [
+    {
+     "family": "Detti",
+     "given": "Paolo"
+    }
+   ],
+   "journal": "",
+   "publisher": "PhysioNet",
+   "year": 2020,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep",
+    "eeg-spectral",
+    "eeg-spikes",
+    "eeg-seizures",
+    "eeg-sleep",
+    "eeg-connectivity",
+    "eeg-report"
+   ]
+  },
+  "10.13026/c2k01r": {
+   "doi": "10.13026/C2K01R",
+   "type": "data",
+   "title": "CHB-MIT Scalp EEG Database",
+   "authors": [
+    {
+     "family": "Shoeb",
+     "given": "Ali"
+    }
+   ],
+   "journal": "",
+   "publisher": "physionet.org",
+   "year": 2010,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep",
+    "eeg-spectral",
+    "eeg-spikes",
+    "eeg-seizures",
+    "eeg-connectivity",
+    "eeg-report"
+   ]
+  },
+  "10.1371/journal.pone.0002051": {
+   "doi": "10.1371/journal.pone.0002051",
+   "type": "article",
+   "title": "Network ‘Small-World-Ness’: A Quantitative Method for Determining Canonical Network Equivalence",
+   "authors": [
+    {
+     "family": "Humphries",
+     "given": "Mark D."
+    },
+    {
+     "family": "Gurney",
+     "given": "Kevin"
+    }
+   ],
+   "journal": "PLoS ONE",
+   "publisher": "",
+   "year": 2008,
+   "volume": "3",
+   "issue": "4",
+   "pages": "e0002051",
+   "pmid": "18446219",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-connectivity"
+   ]
+  },
+  "10.18112/openneuro.ds003555.v1.0.1": {
+   "doi": "10.18112/openneuro.ds003555.v1.0.1",
+   "type": "data",
+   "title": "Dataset of EEG recordings of pediatric patients with epilepsy based on the 10-20 system",
+   "authors": [
+    {
+     "name": "Dorottya Cserpan"
+    },
+    {
+     "name": "Ece Boran"
+    },
+    {
+     "name": "Richard Rosch"
+    },
+    {
+     "name": "San Pietro Lo Biundo"
+    },
+    {
+     "name": "Georgia Ramantani"
+    },
+    {
+     "name": "Johannes Sarnthein"
+    }
+   ],
+   "journal": "",
+   "publisher": "OpenNeuro",
+   "year": 2021,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep",
+    "eeg-spectral",
+    "eeg-sleep",
+    "eeg-connectivity",
+    "eeg-report"
+   ]
+  },
+  "10.21105/joss.01896": {
+   "doi": "10.21105/joss.01896",
+   "type": "article",
+   "title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
+   "authors": [
+    {
+     "family": "Appelhoff",
+     "given": "Stefan"
+    },
+    {
+     "family": "Sanderson",
+     "given": "Matthew"
+    },
+    {
+     "family": "Brooks",
+     "given": "Teon"
+    },
+    {
+     "family": "van Vliet",
+     "given": "Marijn"
+    },
+    {
+     "family": "Quentin",
+     "given": "Romain"
+    },
+    {
+     "family": "Holdgraf",
+     "given": "Chris"
+    },
+    {
+     "family": "Chaumon",
+     "given": "Maximilien"
+    },
+    {
+     "family": "Mikulan",
+     "given": "Ezequiel"
+    },
+    {
+     "family": "Tavabi",
+     "given": "Kambiz"
+    },
+    {
+     "family": "Höchenberger",
+     "given": "Richard"
+    },
+    {
+     "family": "Welke",
+     "given": "Dominik"
+    },
+    {
+     "family": "Brunner",
+     "given": "Clemens"
+    },
+    {
+     "family": "Rockhill",
+     "given": "Alexander"
+    },
+    {
+     "family": "Larson",
+     "given": "Eric"
+    },
+    {
+     "family": "Gramfort",
+     "given": "Alexandre"
+    },
+    {
+     "family": "Jas",
+     "given": "Mainak"
+    }
+   ],
+   "journal": "Journal of Open Source Software",
+   "publisher": "",
+   "year": 2019,
+   "volume": "4",
+   "issue": "44",
+   "pages": "1896",
+   "pmid": "35990374",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep"
+   ]
+  },
+  "10.21105/joss.04484": {
+   "doi": "10.21105/joss.04484",
+   "type": "article",
+   "title": "MNE-ICALabel: Automatically annotating ICA components with ICLabel in Python",
+   "authors": [
+    {
+     "family": "Li",
+     "given": "Adam"
+    },
+    {
+     "family": "Feitelberg",
+     "given": "Jacob"
+    },
+    {
+     "family": "Saini",
+     "given": "Anand Prakash"
+    },
+    {
+     "family": "Höchenberger",
+     "given": "Richard"
+    },
+    {
+     "family": "Scheltienne",
+     "given": "Mathieu"
+    }
+   ],
+   "journal": "Journal of Open Source Software",
+   "publisher": "",
+   "year": 2022,
+   "volume": "7",
+   "issue": "76",
+   "pages": "4484",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep"
+   ]
+  },
+  "10.25080/majora-92bf1922-00a": {
+   "doi": "10.25080/Majora-92bf1922-00a",
+   "type": "conference-paper",
+   "title": "Data Structures for Statistical Computing in Python",
+   "authors": [
+    {
+     "family": "McKinney",
+     "given": "Wes"
+    }
+   ],
+   "journal": "Proceedings of the Python in Science Conference",
+   "publisher": "",
+   "year": 2010,
+   "volume": "",
+   "issue": "",
+   "pages": "56-61",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-seizures"
+   ]
+  },
+  "10.25080/tcwv9851": {
+   "doi": "10.25080/TCWV9851",
+   "type": "conference-paper",
+   "title": "Exploring Network Structure, Dynamics, and Function using NetworkX",
+   "authors": [
+    {
+     "family": "Hagberg",
+     "given": "Aric A."
+    },
+    {
+     "family": "Schult",
+     "given": "Daniel A."
+    },
+    {
+     "family": "Swart",
+     "given": "Pieter J."
+    }
+   ],
+   "journal": "Proceedings of the Python in Science Conference",
+   "publisher": "",
+   "year": 2008,
+   "volume": "",
+   "issue": "",
+   "pages": "11-15",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-connectivity"
+   ]
+  },
+  "10.3389/fninf.2015.00016": {
+   "doi": "10.3389/fninf.2015.00016",
+   "type": "article",
+   "title": "The PREP pipeline: standardized preprocessing for large-scale EEG analysis",
+   "authors": [
+    {
+     "family": "Bigdely-Shamlo",
+     "given": "Nima"
+    },
+    {
+     "family": "Mullen",
+     "given": "Tim"
+    },
+    {
+     "family": "Kothe",
+     "given": "Christian"
+    },
+    {
+     "family": "Su",
+     "given": "Kyung-Min"
+    },
+    {
+     "family": "Robbins",
+     "given": "Kay A."
+    }
+   ],
+   "journal": "Frontiers in Neuroinformatics",
+   "publisher": "",
+   "year": 2015,
+   "volume": "9",
+   "issue": "",
+   "pages": "16",
+   "pmid": "26150785",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep"
+   ]
+  },
+  "10.3389/fnins.2013.00267": {
+   "doi": "10.3389/fnins.2013.00267",
+   "type": "article",
+   "title": "MEG and EEG data analysis with MNE-Python",
+   "authors": [
+    {
+     "family": "Gramfort",
+     "given": "Alexandre"
+    },
+    {
+     "family": "Luessi",
+     "given": "Martin"
+    },
+    {
+     "family": "Larson",
+     "given": "Eric"
+    },
+    {
+     "family": "Engemann",
+     "given": "Denis A."
+    },
+    {
+     "family": "Strohmeier",
+     "given": "Daniel"
+    },
+    {
+     "family": "Brodbeck",
+     "given": "Christian"
+    },
+    {
+     "family": "Goj",
+     "given": "Roman"
+    },
+    {
+     "family": "Jas",
+     "given": "Mainak"
+    },
+    {
+     "family": "Brooks",
+     "given": "Teon"
+    },
+    {
+     "family": "Parkkonen",
+     "given": "Lauri"
+    },
+    {
+     "family": "Hämäläinen",
+     "given": "Matti"
+    }
+   ],
+   "journal": "Frontiers in Neuroscience",
+   "publisher": "",
+   "year": 2013,
+   "volume": "7",
+   "issue": "",
+   "pages": "267",
+   "pmid": "24431986",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep",
+    "eeg-spectral",
+    "eeg-spikes",
+    "eeg-seizures",
+    "eeg-sleep",
+    "eeg-connectivity"
+   ]
+  },
+  "10.3390/pr8070846": {
+   "doi": "10.3390/pr8070846",
+   "type": "article",
+   "title": "EEG Synchronization Analysis for Seizure Prediction: A Study on Data of Noninvasive Recordings",
+   "authors": [
+    {
+     "family": "Detti",
+     "given": "Paolo"
+    },
+    {
+     "family": "Vatti",
+     "given": "Giampaolo"
+    },
+    {
+     "family": "Zabalo Manrique de Lara",
+     "given": "Garazi"
+    }
+   ],
+   "journal": "Processes",
+   "publisher": "",
+   "year": 2020,
+   "volume": "8",
+   "issue": "7",
+   "pages": "846",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep",
+    "eeg-spectral",
+    "eeg-spikes",
+    "eeg-seizures",
+    "eeg-sleep",
+    "eeg-connectivity",
+    "eeg-report"
+   ]
+  },
+  "10.5281/zenodo.10259996": {
+   "doi": "10.5281/zenodo.10259996",
+   "type": "data",
+   "title": "BIDS CHB-MIT Scalp EEG Database",
+   "authors": [
+    {
+     "family": "Jonathan",
+     "given": "Dan"
+    },
+    {
+     "family": "Shoeb",
+     "given": "Ali"
+    }
+   ],
+   "journal": "",
+   "publisher": "EPFL",
+   "year": 2023,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "DataCite",
+   "cited_by": [
+    "registry"
+   ]
+  },
+  "10.5281/zenodo.10278399": {
+   "doi": "10.5281/zenodo.10278399",
+   "type": "software",
+   "title": "MNE-Connectivity",
+   "authors": [
+    {
+     "family": "Binns",
+     "given": "Thomas S"
+    },
+    {
+     "family": "Li",
+     "given": "Adam"
+    },
+    {
+     "family": "Larson",
+     "given": "Eric"
+    },
+    {
+     "family": "McCloy",
+     "given": "Daniel"
+    },
+    {
+     "family": "Rockhill",
+     "given": "Alex"
+    },
+    {
+     "family": "Li",
+     "given": "Qianliang"
+    },
+    {
+     "family": "Ruuskanen",
+     "given": "Santeri"
+    },
+    {
+     "family": "Kroner",
+     "given": "Alexander"
+    },
+    {
+     "family": "Gramfort",
+     "given": "Alexandre"
+    },
+    {
+     "family": "Marraffini",
+     "given": "Giovanni Franco Gabriel"
+    },
+    {
+     "family": "Shor",
+     "given": "Jonathan"
+    },
+    {
+     "family": "Marshall",
+     "given": "Kenji"
+    },
+    {
+     "family": "Orabe",
+     "given": "Mohammad"
+    },
+    {
+     "family": "Gerster",
+     "given": "Moritz"
+    },
+    {
+     "family": "Stevenson",
+     "given": "Rebecca F"
+    },
+    {
+     "family": "Köhler",
+     "given": "Richard M"
+    },
+    {
+     "family": "Steingold",
+     "given": "Sam"
+    },
+    {
+     "family": "Mert",
+     "given": "Sezan"
+    }
+   ],
+   "journal": "",
+   "publisher": "",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "https://github.com/mne-tools/mne-connectivity",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-connectivity"
+   ]
+  },
+  "10.5281/zenodo.10640762": {
+   "doi": "10.5281/zenodo.10640762",
+   "type": "data",
+   "title": "BIDS Siena Scalp EEG Database",
+   "authors": [
+    {
+     "family": "Dan",
+     "given": "Jonathan"
+    },
+    {
+     "family": "Detti",
+     "given": "Paolo"
+    }
+   ],
+   "journal": "",
+   "publisher": "EPFL",
+   "year": 2024,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep",
+    "eeg-spectral",
+    "eeg-spikes",
+    "eeg-seizures",
+    "eeg-sleep",
+    "eeg-connectivity",
+    "eeg-report"
+   ]
+  },
+  "10.5281/zenodo.5643659": {
+   "doi": "10.5281/zenodo.5643659",
+   "type": "software",
+   "title": "nbara/python-meegkit: v0.1.1",
+   "authors": [
+    {
+     "family": "Barascud",
+     "given": "Nicolas"
+    },
+    {
+     "family": "Alcocer",
+     "given": "Pedro"
+    },
+    {
+     "name": "Paulroujansky"
+    },
+    {
+     "family": "Tresols",
+     "given": "Juan Jesús Torre"
+    },
+    {
+     "family": "Pals",
+     "given": "Matthijs"
+    },
+    {
+     "family": "Quentin",
+     "given": "Romain"
+    },
+    {
+     "family": "Royen",
+     "given": "Clément"
+    },
+    {
+     "name": ", Giuseppe"
+    },
+    {
+     "name": "Ludovicdmt"
+    }
+   ],
+   "journal": "",
+   "publisher": "Zenodo",
+   "year": 2021,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep"
+   ]
+  },
+  "10.5281/zenodo.6363575": {
+   "doi": "10.5281/zenodo.6363575",
+   "type": "software",
+   "title": "PyPREP: A Python implementation of the preprocessing pipeline (PREP) for EEG data.",
+   "authors": [
+    {
+     "family": "Appelhoff",
+     "given": "Stefan"
+    },
+    {
+     "family": "Hurst",
+     "given": "Austin J."
+    },
+    {
+     "family": "Lawrence",
+     "given": "Aamna"
+    },
+    {
+     "family": "Li",
+     "given": "Adam"
+    },
+    {
+     "family": "Mantilla Ramos",
+     "given": "Yorguin José"
+    },
+    {
+     "family": "O'Reilly",
+     "given": "Christian"
+    },
+    {
+     "family": "Xiang",
+     "given": "Liang"
+    },
+    {
+     "family": "Dancker",
+     "given": "Jonte"
+    },
+    {
+     "family": "Scheltienne",
+     "given": "Mathieu"
+    },
+    {
+     "family": "Bialas",
+     "given": "Ole"
+    },
+    {
+     "family": "Alibou",
+     "given": "Nabil"
+    },
+    {
+     "family": "Agarwal",
+     "given": "Ayush"
+    },
+    {
+     "family": "Veillette",
+     "given": "John"
+    },
+    {
+     "family": "Wieske",
+     "given": "Roy Eric"
+    }
+   ],
+   "journal": "",
+   "publisher": "Zenodo",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-prep"
+   ]
+  },
+  "10.5665/sleep.5774": {
+   "doi": "10.5665/sleep.5774",
+   "type": "article",
+   "title": "Scaling Up Scientific Discovery in Sleep Medicine: The National Sleep Research Resource",
+   "authors": [
+    {
+     "family": "Dean",
+     "given": "Dennis A."
+    },
+    {
+     "family": "Goldberger",
+     "given": "Ary L."
+    },
+    {
+     "family": "Mueller",
+     "given": "Remo"
+    },
+    {
+     "family": "Kim",
+     "given": "Matthew"
+    },
+    {
+     "family": "Rueschman",
+     "given": "Michael"
+    },
+    {
+     "family": "Mobley",
+     "given": "Daniel"
+    },
+    {
+     "family": "Sahoo",
+     "given": "Satya S."
+    },
+    {
+     "family": "Jayapandian",
+     "given": "Catherine P."
+    },
+    {
+     "family": "Cui",
+     "given": "Licong"
+    },
+    {
+     "family": "Morrical",
+     "given": "Michael G."
+    },
+    {
+     "family": "Surovec",
+     "given": "Susan"
+    },
+    {
+     "family": "Zhang",
+     "given": "Guo-Qiang"
+    },
+    {
+     "family": "Redline",
+     "given": "Susan"
+    }
+   ],
+   "journal": "Sleep",
+   "publisher": "",
+   "year": 2016,
+   "volume": "39",
+   "issue": "5",
+   "pages": "1151-1164",
+   "pmid": "27070134",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-sleep"
+   ]
+  },
+  "10.6084/m9.figshare.28069568.v2": {
+   "doi": "10.6084/m9.figshare.28069568.v2",
+   "type": "data",
+   "title": "An EEG dataset for interictal epileptiform discharge with spatial distribution information",
+   "authors": [
+    {
+     "family": "Lin",
+     "given": "Nan"
+    },
+    {
+     "family": "zheng",
+     "given": "Mengxuan"
+    },
+    {
+     "family": "Li",
+     "given": "Lian"
+    },
+    {
+     "family": "Hu",
+     "given": "Peng"
+    },
+    {
+     "family": "Gao",
+     "given": "Weifang"
+    },
+    {
+     "family": "Sun",
+     "given": "Heyang"
+    },
+    {
+     "family": "Xu",
+     "given": "Chang"
+    },
+    {
+     "family": "Yuan",
+     "given": "Gonglin"
+    },
+    {
+     "family": "Liang",
+     "given": "Zi"
+    },
+    {
+     "family": "Dong",
+     "given": "Yisu"
+    },
+    {
+     "family": "He",
+     "given": "Haibo"
+    },
+    {
+     "family": "Cui",
+     "given": "Liying"
+    },
+    {
+     "family": "Lu",
+     "given": "Qiang"
+    }
+   ],
+   "journal": "",
+   "publisher": "figshare",
+   "year": 2025,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-spikes"
+   ]
+  },
+  "10.7554/elife.70092": {
+   "doi": "10.7554/eLife.70092",
+   "type": "article",
+   "title": "An open-source, high-performance tool for automated sleep staging",
+   "authors": [
+    {
+     "family": "Vallat",
+     "given": "Raphael"
+    },
+    {
+     "family": "Walker",
+     "given": "Matthew P"
+    }
+   ],
+   "journal": "eLife",
+   "publisher": "",
+   "year": 2021,
+   "volume": "10",
+   "issue": "",
+   "pages": "e70092",
+   "pmid": "34648426",
+   "url": "",
+   "repository": "",
+   "source": "CITATION.cff",
+   "cited_by": [
+    "eeg-sleep"
+   ]
+  }
+ }
+}
